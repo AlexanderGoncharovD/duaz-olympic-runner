@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 99c4ba4464026fc49b361853a469eeb1
-timeCreated: 1555934332
+timeCreated: 1556003920
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,13 @@ TextureImporter:
     21300016: shadow
     21300018: maneken_head
     21300020: maneken_body
+    21300022: mummy_body
+    21300024: mummy_step
+    21300026: mummy_hand
+    21300028: mummy_hand_2
+    21300030: mummy_head
+    21300032: mummy_leg_2
+    21300034: mummy_leg
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -247,6 +254,104 @@ TextureImporter:
         height: 134
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_body
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 0
+        width: 92
+        height: 179
+      alignment: 9
+      pivot: {x: 0.45466083, y: 0.10239437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_step
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 180
+        width: 55
+        height: 28
+      alignment: 9
+      pivot: {x: 0.19908892, y: 0.71336365}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_hand
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 110
+        width: 50
+        height: 99
+      alignment: 9
+      pivot: {x: 0.60980105, y: 0.8226742}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_hand_2
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 0
+        width: 58
+        height: 108
+      alignment: 9
+      pivot: {x: 0.59457505, y: 0.86561775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_head
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 0
+        width: 59
+        height: 96
+      alignment: 9
+      pivot: {x: 0.37304997, y: 0.19610745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_leg_2
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 28
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5161656, y: 0.85012877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mummy_leg
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 97
+        width: 45
+        height: 138
+      alignment: 9
+      pivot: {x: 0.34200576, y: 0.89495915}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
