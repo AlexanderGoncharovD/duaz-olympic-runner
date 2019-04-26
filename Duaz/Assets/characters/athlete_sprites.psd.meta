@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7bf750b716cf9c643bf4203c2ac00bd5
-timeCreated: 1556198719
+timeCreated: 1556261236
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,7 @@ TextureImporter:
     21300010: head
     21300012: hend_up
     21300014: hend_down
+    21300016: shadow
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -202,6 +203,20 @@ TextureImporter:
         height: 109
       alignment: 9
       pivot: {x: 0.304545, y: 0.87363666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shadow
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 224
+        width: 101
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
