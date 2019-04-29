@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: b614905a0d09dfc4894cfe69a4ddbc90
-timeCreated: 1556428249
+timeCreated: 1556535513
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: start
     21300002: track_0
     21300004: barrier
+    21300006: track_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -125,6 +126,20 @@ TextureImporter:
         y: 0
         width: 90
         height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 238
+        width: 724
+        height: 354
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
