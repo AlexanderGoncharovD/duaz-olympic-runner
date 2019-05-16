@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a37ff84a9f864e344a5361e67f8acdfa
-timeCreated: 1557090215
+timeCreated: 1557990386
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -106,10 +106,10 @@ TextureImporter:
       name: track test_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1239
-        width: 1289
-        height: 809
+        x: 17
+        y: 973
+        width: 1267
+        height: 1075
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
