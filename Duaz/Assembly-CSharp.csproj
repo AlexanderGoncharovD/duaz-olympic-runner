@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D8C7873B-26E4-5835-45CC-593CA6B24846}</ProjectGuid>
+    <ProjectGuid>{E67C445D-93FE-7BA0-7290-2A57391A61CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\authorization.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonStatusCodes.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonTypes.cs" />
@@ -234,8 +233,7 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\TokenClient.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
      <Compile Include="Assets\GPGSIds.cs" />
-     <Compile Include="Assets\version 2\Authorization.cs" />
-     <Compile Include="Assets\version 2\GenerationLocation.cs" />
+     <Compile Include="Assets\scripts\LocationGeneration.cs" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\res\values\values.xml" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\R.txt" />
      <None Include="Assets\GooglePlayGames\Editor\m2repository\com\google\games\gpgs-plugin-support\maven-metadata.xml" />

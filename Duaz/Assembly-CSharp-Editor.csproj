@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{76899A84-5F67-D015-26D4-C0FA943E0006}</ProjectGuid>
+    <ProjectGuid>{2D82D250-D2F0-3228-68B4-C5CDE7A761BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -140,16 +140,16 @@
  <HintPath>C:/Users/lab230/MyFiles/Unity 3D/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Google.IOSResolver_v1.2.95.0">
- <HintPath>C:/GPS-Multiplayer/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.95.0.dll</HintPath>
+ <HintPath>C:/duaz-opympic-runner/Duaz/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.95.0.dll</HintPath>
  </Reference>
  <Reference Include="Google.JarResolver_v1.2.95.0">
- <HintPath>C:/GPS-Multiplayer/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.95.0.dll</HintPath>
+ <HintPath>C:/duaz-opympic-runner/Duaz/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.95.0.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandler">
- <HintPath>C:/GPS-Multiplayer/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ <HintPath>C:/duaz-opympic-runner/Duaz/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandlerImpl_v1.2.95.0">
- <HintPath>C:/GPS-Multiplayer/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.95.0.dll</HintPath>
+ <HintPath>C:/duaz-opympic-runner/Duaz/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.95.0.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Users/lab230/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@1.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{D8C7873B-26E4-5835-45CC-593CA6B24846}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{E67C445D-93FE-7BA0-7290-2A57391A61CC}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
