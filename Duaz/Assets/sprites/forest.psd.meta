@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1558225092
+timeCreated: 1558299455
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -42,6 +42,15 @@ TextureImporter:
     21300070: tree_8
     21300072: tree_9
     21300074: tree_10
+    21300076: rock_9
+    21300078: rock_10
+    21300080: rock_11
+    21300082: rock_12
+    21300084: rock_13
+    21300086: fance_1
+    21300088: fance_2
+    21300090: fance_3
+    21300092: fance_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -651,6 +660,132 @@ TextureImporter:
         width: 194
         height: 238
       alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rock_9
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 607
+        width: 33
+        height: 33
+      alignment: 9
+      pivot: {x: 0.49525404, y: 0.053964324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rock_10
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 606
+        width: 54
+        height: 32
+      alignment: 9
+      pivot: {x: 0.49999774, y: 0.08917999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rock_11
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 641
+        width: 49
+        height: 38
+      alignment: 9
+      pivot: {x: 0.48890156, y: 0.04681557}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rock_12
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 643
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.50453186, y: -0.0053673945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rock_13
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 680
+        width: 50
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5040039, y: 0.009449768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fance_1
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 832
+        width: 54
+        height: 73
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fance_2
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 873
+        width: 117
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fance_3
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 872
+        width: 117
+        height: 71
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fance_4
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 947
+        width: 157
+        height: 72
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
