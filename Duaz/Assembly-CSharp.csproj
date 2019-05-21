@@ -233,7 +233,12 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\TokenClient.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
      <Compile Include="Assets\GPGSIds.cs" />
+     <Compile Include="Assets\scripts\CameraLookAtPlayer.cs" />
+     <Compile Include="Assets\scripts\CloudGeneration.cs" />
+     <Compile Include="Assets\scripts\DecorationGeneration.cs" />
      <Compile Include="Assets\scripts\LocationGeneration.cs" />
+     <Compile Include="Assets\scripts\Player.cs" />
+     <Compile Include="Assets\scripts\RubbishGeneration.cs" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\res\values\values.xml" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\R.txt" />
      <None Include="Assets\GooglePlayGames\Editor\m2repository\com\google\games\gpgs-plugin-support\maven-metadata.xml" />
