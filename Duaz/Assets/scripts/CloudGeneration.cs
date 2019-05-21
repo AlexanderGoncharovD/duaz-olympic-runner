@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudGeneration : MonoBehaviour {
-
+public class CloudGeneration : MonoBehaviour
+{
     public Sprite[] Clouds; // Спрайты облаков
 
     [Header("Settings")]
@@ -25,11 +25,6 @@ public class CloudGeneration : MonoBehaviour {
 
         CloudGenerationGO();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void CloudGenerationGO ()
     {

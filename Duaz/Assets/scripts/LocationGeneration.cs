@@ -71,11 +71,11 @@ public class LocationGeneration : MonoBehaviour
             LayersGO[i - 1].tag = "layer";
             LayersGO[i - 1].transform.parent = ParentDecoration;
         }
-        ChunkUpGrassGeneration ();
+        ChunkGeneration ();
     }
 
     /*Генерация объектов декорации в пределах одного чанка на верхней траве над дорогой*/
-    void ChunkUpGrassGeneration ()
+    void ChunkGeneration ()
     {
         GameObject newDecoration; // новая генерируема декорация
 
