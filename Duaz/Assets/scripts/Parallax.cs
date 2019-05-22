@@ -25,6 +25,6 @@ public class Parallax : MonoBehaviour
         Layers[0].transform.position += Vector3.left * SpeedMoveCamera / SpeedIndex * 1.8f * Time.deltaTime;
         Layers[2].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.75f * Time.deltaTime;
         Layers[3].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 1.75f * Time.deltaTime;
-        Layers[4].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.5f * Time.deltaTime;
+        Layers[4].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 3.5f * Time.deltaTime;
     }
 }

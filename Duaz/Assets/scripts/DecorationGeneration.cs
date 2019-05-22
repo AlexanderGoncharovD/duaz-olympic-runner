@@ -53,7 +53,7 @@ public class DecorationGeneration : MonoBehaviour
             Layer = new GameObject();
             Layer.tag = Layer.name = "Layer" + NumLayerParallax;
         }
-
+        LengthLocation = GetComponent<LocationGeneration>().LengthLocation * 2.5f;
         ChunkCalculations ();
     }
 

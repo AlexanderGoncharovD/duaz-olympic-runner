@@ -18,7 +18,7 @@ public class RubbishGeneration : MonoBehaviour
     int NumberOfChanks; // Количество чанков на всю длину
 
     [Header("Other")]
-    public float LengthLocation = 18; // Длина всей локации
+    float LengthLocation = 18; // Длина всей локации
     public int ZeroLayer = 20; // слой для муосра
     public GameObject prefabEmptySprite; // пустая болванка для спрайта
     public Transform ParentDecoration; // Родительский объект для декораций
@@ -28,6 +28,7 @@ public class RubbishGeneration : MonoBehaviour
     void Start () {
         GameObject[] grounds = GameObject.FindGameObjectsWithTag("Ground");
         Layer1 = GameObject.FindGameObjectWithTag("Layer1").transform;
+        LengthLocation = GetComponent<LocationGeneration>().LengthLocation * 1.25f;
         NumberOfChanks = Mathf.CeilToInt(LengthLocation / ChunkSize.x); // Количество чанков на всю длину
         RubbishGenerationGO();
 	}

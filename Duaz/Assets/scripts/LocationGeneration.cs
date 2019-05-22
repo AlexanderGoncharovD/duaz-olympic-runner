@@ -6,6 +6,7 @@ public class LocationGeneration : MonoBehaviour
 {
     [Header("Settings location")]
     public GameObject LocationObject; // Объект локации для клонирования
+    public GameObject GroundLocationObject; // быстродвижующаяся самая ближняя к камере часть локации
     public Transform NextPoint; // Точка спавна следующией копии этой локации
     public int LengthLocation = 200;
 
@@ -20,12 +21,20 @@ public class LocationGeneration : MonoBehaviour
 
         CountLocationGenerated = Mathf.CeilToInt(LengthLocation / DistanceToNextSpawn);
 
-        for (int i = 1; i <= CountLocationGenerated; i++)
+        for (int i = 1; i <= CountLocationGenerated + Mathf.CeilToInt(CountLocationGenerated * 0.25f); i++)
         {
-            Instantiate(LocationObject, NextPoint.localPosition, Quaternion.identity);
+            if (i <= CountLocationGenerated)
+            {
+                Instantiate(LocationObject, NextPoint.localPosition, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(GroundLocationObject, NextPoint.localPosition, Quaternion.identity);
+            }
             NextPoint.localPosition += new Vector3(18, 0, 0);
         }
         Destroy(LocationObject);
+        Destroy(GroundLocationObject);
 
         GameObject[] grounds = GameObject.FindGameObjectsWithTag("Ground");
         Layer1 = GameObject.FindGameObjectWithTag("Layer1").transform;
