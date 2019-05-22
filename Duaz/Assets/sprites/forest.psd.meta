@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1558497150
+timeCreated: 1558509950
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,6 +56,7 @@ TextureImporter:
     21300098: start_grass
     21300100: background_1
     21300102: background_2
+    21300104: background_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -844,10 +845,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1242
-        width: 1083
-        height: 345
+        width: 1265
+        height: 274
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -857,9 +858,23 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1590
-        width: 754
-        height: 338
+        y: 1516
+        width: 1273
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: background_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 126
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

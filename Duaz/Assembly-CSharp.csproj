@@ -237,6 +237,7 @@
      <Compile Include="Assets\scripts\CloudGeneration.cs" />
      <Compile Include="Assets\scripts\DecorationGeneration.cs" />
      <Compile Include="Assets\scripts\LocationGeneration.cs" />
+     <Compile Include="Assets\scripts\Parallax.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
      <Compile Include="Assets\scripts\RubbishGeneration.cs" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\res\values\values.xml" />

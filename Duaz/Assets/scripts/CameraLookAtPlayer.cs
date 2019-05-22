@@ -10,6 +10,8 @@ public class CameraLookAtPlayer : MonoBehaviour {
     public float smooth = 1.0f; // скорость сглаживания приследования 
     public Vector2 smoothRange = new Vector2(0.1f, 1.0f); // Диапозон скорости сглаживания приследования камерой
     public float DistanceFromStart = 4.0f; // Дистаниция, которую игрок пробегает до начала приследования камерой
+    public float SpeedMoveCamera; // Скорость перемещения камера за кадр
+    Vector3 xMoveCamera, xLateMoveCamera; // х камеры до и после кадра
 
     bool isLookAt = true; // нужно ли в анный момент следить за игроком
     Vector3 playerStartPoint; // точка, из которой старует игрок
@@ -20,9 +22,10 @@ public class CameraLookAtPlayer : MonoBehaviour {
         playerStartPoint = Player.position;
         smooth = smoothRange.x;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+	void LateUpdate() {
+        xMoveCamera = Camera.position;
 
         // Слежение камеры за игрком
         if (isLookAt)
@@ -40,5 +43,7 @@ public class CameraLookAtPlayer : MonoBehaviour {
             Camera.position = new Vector3(Mathf.Lerp(Camera.position.x, Player.position.x, Time.deltaTime * smooth),
                 Mathf.Lerp(Camera.position.y, Player.position.y, Time.deltaTime * smooth), -10);
         }
+        xLateMoveCamera = Camera.position;
+        SpeedMoveCamera = (xMoveCamera - xLateMoveCamera).magnitude / Time.deltaTime;
     }
 }

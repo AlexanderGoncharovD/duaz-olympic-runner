@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
 
         if (RunFast)
         {
-            if (Speed.x < 6)
+            if (Speed.x < 10)
             {
-                Speed.x += Time.deltaTime * 3;
+                Speed.x += Time.deltaTime * 6;
             }
         }
         else
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", 1.0f);
         animator.SetBool("run", true);
         run = true;
+        this.GetComponent<Parallax>().enabled = true;
     }
     
     

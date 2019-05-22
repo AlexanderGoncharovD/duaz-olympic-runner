@@ -15,13 +15,16 @@ public class CloudGeneration : MonoBehaviour
     [Header("Other")]
     public GameObject prefabEmptySprite; // пустая болванка для спрайта
     public Transform ParentDecoration; // Родительский объект для декораций
-    GameObject LayersGO;  // группировка декорация по номеру слоя
+    GameObject Layer5;  // группировка декорация по номеру слоя
 
     void Start () {
-        LayersGO = new GameObject();
-        LayersGO.name = "layer";
-        LayersGO.tag = "layer";
-        LayersGO.transform.parent = ParentDecoration;
+        // Нахождение/создание слоя для параллакса
+        Layer5 = GameObject.FindGameObjectWithTag("Layer5");
+        if (Layer5 == null)
+        {
+            Layer5 = new GameObject();
+            Layer5.tag = Layer5.name = "Layer5";
+        }
 
         CloudGenerationGO();
     }
@@ -34,7 +37,7 @@ public class CloudGeneration : MonoBehaviour
         {
             newCloud = Instantiate(prefabEmptySprite, new Vector3(Chunk.position.x + i, Chunk.position.y
                 + Random.Range(DenyMinMaxY.x, DenyMinMaxY.y)), Quaternion.identity);
-            newCloud.transform.parent = LayersGO.transform;
+            newCloud.transform.parent = Layer5.transform;
             newCloud.GetComponent<SpriteRenderer>().sprite = Clouds[Random.Range(0, Clouds.Length)];
             newCloud.GetComponent<SpriteRenderer>().sortingOrder = -132;
 

@@ -40,11 +40,20 @@ public class DecorationGeneration : MonoBehaviour
     public GameObject prefabEmptySprite; // пустая болванка для спрайта
     public Transform ParentDecoration; // Родительский объект для декораций
     GameObject[] LayersGO; // группировка декорация по номеру слоя
+    public int NumLayerParallax = 1; // номер слоя для парраллакса
+    GameObject Layer; // Слой для параллакса
 
     // Use this for initialization
     void Start ()
     {
-        LengthLocation = this.GetComponent<LocationGeneration>().LengthLocation * 3;
+        // Нахождение/создание слоя для параллакса
+        Layer = GameObject.FindGameObjectWithTag("Layer" + NumLayerParallax);
+        if (Layer == null)
+        {
+            Layer = new GameObject();
+            Layer.tag = Layer.name = "Layer" + NumLayerParallax;
+        }
+
         ChunkCalculations ();
     }
 
@@ -64,14 +73,14 @@ public class DecorationGeneration : MonoBehaviour
         }
 
         // Создание пустышек для группировки декорация по номеру слоя
-        LayersGO = new GameObject[ChunkGrid.y];
+        /*LayersGO = new GameObject[ChunkGrid.y];
         for (int i = 1; i <= ChunkGrid.y; i++)
         {
             LayersGO[i - 1] = new GameObject();
             LayersGO[i - 1].name = "layer";
             LayersGO[i - 1].tag = "layer";
             LayersGO[i - 1].transform.parent = ParentDecoration;
-        }
+        }*/
         ChunkGeneration ();
     }
 
@@ -142,7 +151,7 @@ public class DecorationGeneration : MonoBehaviour
         GameObject newObject = Instantiate(prefabEmptySprite, position, Quaternion.identity);
         newObject.GetComponent<SpriteRenderer>().sprite = sprite;
         newObject.GetComponent<SpriteRenderer>().sortingOrder = ZeroLayer - layer;
-        newObject.transform.parent = LayersGO[layer - 1].transform;
+        newObject.transform.parent = /*LayersGO[layer - 1].transform*/ Layer.transform;
 
         // Удаление использованной ячейки из списка оставшихся доступных ячеек
         PossibleCells = "";
