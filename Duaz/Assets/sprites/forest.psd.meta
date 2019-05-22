@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1558299455
+timeCreated: 1558497150
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -51,6 +51,11 @@ TextureImporter:
     21300088: fance_2
     21300090: fance_3
     21300092: fance_4
+    21300094: ground_grass
+    21300096: start
+    21300098: start_grass
+    21300100: background_1
+    21300102: background_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -787,6 +792,76 @@ TextureImporter:
         height: 72
       alignment: 7
       pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ground_grass
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1201
+        width: 1266
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: start
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 982
+        width: 181
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: start_grass
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1024
+        width: 271
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: background_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1242
+        width: 1083
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: background_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1590
+        width: 754
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

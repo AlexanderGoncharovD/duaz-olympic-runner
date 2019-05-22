@@ -36,7 +36,7 @@ public class CloudGeneration : MonoBehaviour
                 + Random.Range(DenyMinMaxY.x, DenyMinMaxY.y)), Quaternion.identity);
             newCloud.transform.parent = LayersGO.transform;
             newCloud.GetComponent<SpriteRenderer>().sprite = Clouds[Random.Range(0, Clouds.Length)];
-            newCloud.GetComponent<SpriteRenderer>().sortingOrder = -131;
+            newCloud.GetComponent<SpriteRenderer>().sortingOrder = -132;
 
         }
     }
