@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - Background_1
   - Background_2
+  - Layer0
   layers:
   - Default
   - TransparentFX

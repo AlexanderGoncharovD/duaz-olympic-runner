@@ -11,20 +11,17 @@ public class Parallax : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-        Layers[0] = GameObject.FindGameObjectWithTag("Layer1");
-        Layers[1] = GameObject.FindGameObjectWithTag("Layer2");
-        Layers[2] = GameObject.FindGameObjectWithTag("Layer3");
-        Layers[3] = GameObject.FindGameObjectWithTag("Layer4");
-        Layers[4] = GameObject.FindGameObjectWithTag("Layer5");
+        Layers[0] = GameObject.FindGameObjectWithTag("Layer3");
+        Layers[1] = GameObject.FindGameObjectWithTag("Layer4");
+        Layers[2] = GameObject.FindGameObjectWithTag("Layer5");
     }
 
     // Update is called once per frame
     void Update()
     {
         SpeedMoveCamera = GetComponent<CameraLookAtPlayer>().SpeedMoveCamera;
-        Layers[0].transform.position += Vector3.left * SpeedMoveCamera / SpeedIndex * 1.8f * Time.deltaTime;
-        Layers[2].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.75f * Time.deltaTime;
-        Layers[3].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 1.75f * Time.deltaTime;
-        Layers[4].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 3.5f * Time.deltaTime;
+        Layers[0].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.5f * Time.deltaTime;
+        Layers[1].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 1.5f * Time.deltaTime;
+        Layers[2].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 2.5f * Time.deltaTime;
     }
 }

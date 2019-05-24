@@ -22,13 +22,10 @@ public class RubbishGeneration : MonoBehaviour
     public int ZeroLayer = 20; // слой для муосра
     public GameObject prefabEmptySprite; // пустая болванка для спрайта
     public Transform ParentDecoration; // Родительский объект для декораций
-    Transform Layer1;
 
     // Use this for initialization
     void Start () {
-        GameObject[] grounds = GameObject.FindGameObjectsWithTag("Ground");
-        Layer1 = GameObject.FindGameObjectWithTag("Layer1").transform;
-        LengthLocation = GetComponent<LocationGeneration>().LengthLocation * 1.25f;
+        LengthLocation = GetComponent<LocationGeneration>().LengthLocation;
         NumberOfChanks = Mathf.CeilToInt(LengthLocation / ChunkSize.x); // Количество чанков на всю длину
         RubbishGenerationGO();
 	}
@@ -79,7 +76,7 @@ public class RubbishGeneration : MonoBehaviour
 
         newObject.GetComponent<SpriteRenderer>().sprite = sprite;
         newObject.GetComponent<SpriteRenderer>().sortingOrder = ZeroLayer;
-        newObject.transform.parent = Layer1;
+        newObject.transform.parent = ParentDecoration;
 
         return newObject;
     }

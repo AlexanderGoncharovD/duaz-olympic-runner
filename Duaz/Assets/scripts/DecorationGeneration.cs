@@ -39,21 +39,11 @@ public class DecorationGeneration : MonoBehaviour
     public int ZeroLayer; // нулевой слой, начало отсчета для слоев новых объектовs
     public GameObject prefabEmptySprite; // пустая болванка для спрайта
     public Transform ParentDecoration; // Родительский объект для декораций
-    GameObject[] LayersGO; // группировка декорация по номеру слоя
-    public int NumLayerParallax = 1; // номер слоя для парраллакса
-    GameObject Layer; // Слой для параллакса
 
     // Use this for initialization
     void Start ()
     {
-        // Нахождение/создание слоя для параллакса
-        Layer = GameObject.FindGameObjectWithTag("Layer" + NumLayerParallax);
-        if (Layer == null)
-        {
-            Layer = new GameObject();
-            Layer.tag = Layer.name = "Layer" + NumLayerParallax;
-        }
-        LengthLocation = GetComponent<LocationGeneration>().LengthLocation * 2.5f;
+        LengthLocation = GetComponent<LocationGeneration>().LengthLocation * 2.0f;
         ChunkCalculations ();
     }
 
@@ -71,16 +61,6 @@ public class DecorationGeneration : MonoBehaviour
                 AvailableCells += row + "" + col + ":";
             }
         }
-
-        // Создание пустышек для группировки декорация по номеру слоя
-        /*LayersGO = new GameObject[ChunkGrid.y];
-        for (int i = 1; i <= ChunkGrid.y; i++)
-        {
-            LayersGO[i - 1] = new GameObject();
-            LayersGO[i - 1].name = "layer";
-            LayersGO[i - 1].tag = "layer";
-            LayersGO[i - 1].transform.parent = ParentDecoration;
-        }*/
         ChunkGeneration ();
     }
 
@@ -99,7 +79,6 @@ public class DecorationGeneration : MonoBehaviour
             {
                 newDecoration = CreateDecoration(TreeDec[Random.Range(0, TreeDec.Length)]); // генерация дерева с случайным спрайтом
                 newDecoration.name = "tree_" + i;
-                //newDecoration.transform.parent = ParentDecoration;
             }
 
             // генерация камней
@@ -109,7 +88,6 @@ public class DecorationGeneration : MonoBehaviour
                 {
                     newDecoration = CreateDecoration(GroundRockDec[Random.Range(0, GroundRockDec.Length)]); // генерация наземного камня с случайным спрайтом
                     newDecoration.name = "groundRock_" + i + "_" + k ;
-                    //newDecoration.transform.parent = ParentDecoration;
                 }
             }
 
@@ -118,7 +96,6 @@ public class DecorationGeneration : MonoBehaviour
             {
                 newDecoration = CreateDecoration(BushDec[Random.Range(0, BushDec.Length)]); // генерация куста с случайным спрайтом
                 newDecoration.name = "bush_" + i;
-                //newDecoration.transform.parent = ParentDecoration;
             }
 
             // генерация травы
@@ -126,7 +103,6 @@ public class DecorationGeneration : MonoBehaviour
             {
                 newDecoration = CreateDecoration(GrassDec[Random.Range(0, GrassDec.Length)]); // генерация травы с случайным спрайтом
                 newDecoration.name = "grass_" + i;
-                //newDecoration.transform.parent = ParentDecoration;
             }
             Chunk.position = new Vector3(Chunk.position.x + SizeChunk.x/2, Chunk.position.y, Chunk.position.z);
         }
@@ -151,7 +127,7 @@ public class DecorationGeneration : MonoBehaviour
         GameObject newObject = Instantiate(prefabEmptySprite, position, Quaternion.identity);
         newObject.GetComponent<SpriteRenderer>().sprite = sprite;
         newObject.GetComponent<SpriteRenderer>().sortingOrder = ZeroLayer - layer;
-        newObject.transform.parent = /*LayersGO[layer - 1].transform*/ Layer.transform;
+        newObject.transform.parent = ParentDecoration;
 
         // Удаление использованной ячейки из списка оставшихся доступных ячеек
         PossibleCells = "";

@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start() {
         animator = this.GetComponent<Animator>();
-        Invoke("AnimationStartAnimSpeedRun", 1.4f);
     }
 
     // Update is called once per frame
