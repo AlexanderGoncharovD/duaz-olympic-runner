@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1558661771
+timeCreated: 1558696143
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -575,20 +575,6 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: board
-      rect:
-        serializedVersion: 2
-        x: 1276
-        y: 340
-        width: 12
-        height: 94
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: board_broken
       rect:
         serializedVersion: 2
@@ -886,10 +872,10 @@ TextureImporter:
       name: barrier
       rect:
         serializedVersion: 2
-        x: 1557
-        y: 947
-        width: 100
-        height: 231
+        x: 1558
+        y: 951
+        width: 22
+        height: 133
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
