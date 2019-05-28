@@ -5,8 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Vector2 Speed = new Vector2(2, 5); // Минимальная и максимальная скорость игрока
+    public float Energy = 100.0f;  // запас энергии
     public bool run;
     public bool RunFast;
+
+    public Interface Interface; // ссылка на скрипт
 
     Animator animator;
 
@@ -39,6 +42,19 @@ public class Player : MonoBehaviour
             if (Speed.x > 4)
             {
                 Speed.x -= Time.deltaTime * 3;
+            }
+        }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (Energy > 0)
+            {
+                Energy -= 5.0f;
+                Interface.CalculationSizeEnergyBar();
+            }
+            else
+            {
+                Energy = 0;
             }
         }
     }
