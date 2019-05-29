@@ -33,8 +33,8 @@ public class Interface : MonoBehaviour {
 	void Start () {
 
         isShowFinishMarker = true;
-        EnergyMax = PlayerScript.Energy;
-        EnergyPercent = (PlayerScript.Energy * 100.0f) / EnergyMax;
+        EnergyMax = PlayerScript.MaxEnergy;
+        EnergyPercent = (EnergyMax * 100.0f) / EnergyMax;
         CalculationSizeEnergyBar();
     }
 	
@@ -53,6 +53,10 @@ public class Interface : MonoBehaviour {
         if (isResizeEnergy)
         {
             EnergySprite.localScale = Vector3.Lerp(new Vector3(EnergySprite.localScale.x, 1, 1), new Vector3(CurTargetSize.y, 1, 1), Time.deltaTime * EnergySmooth);
+            if (EnergySprite.localScale.x < 0)
+            {
+                EnergySprite.localScale = new Vector3(0, 1, 1);
+            }
             if (EnergyText.activeSelf)
             {
                 if (Math.Round(EnergySprite.localScale.x, 2)  <= 0.13f)
