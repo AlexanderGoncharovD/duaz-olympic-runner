@@ -20,8 +20,15 @@ public class Player : MonoBehaviour
     public bool RunFast;
     bool SmoothRunFastLayer2Anim; // Параметер второго анимациинного слоя на персонаже, параметер отвчает за прозрачность анимационного слоя
     float TimerRunFastLayer2Anim; // Время поистечению которого анимацинной слой ускорения становится прозрачным
+    public bool isJump = false, isJumpOver = false; // используется в анимации при прыжке
 
     public Interface Interface; // ссылка на скрипт
+    public Animator InterfaceAnimator; //Ссылка на аниматор графического интерфейса
+    public GameObject EnergyBorder; // для анимации, когда заканчивается энергия
+
+
+    public Vector2 startPos;
+    public Vector2 direction;
 
     Animator animator;
     Rigidbody rigidbody;
@@ -48,33 +55,13 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (Energy > 0)
-            {
-                if (Speed < RangeSpeed.y)
-                {
-                    Energy -= 1.0f;
-                    Speed += SpeedUp;
-                    SpeedUp -= SpeedUp * SpeedUpDecrease;
-                    EnergyTimer = DelyRecoveryEnergy;
-                }
-                else
-                {
-                    Energy -= 0.5f;
-                    EnergyTimer = DelyRecoveryEnergy;
-                }
-                Interface.CalculationSizeEnergyBar();
-            }
-            else
-            {
-                Energy = 0;
-                Interface.CalculationSizeEnergyBar();
-            }
-            SmoothRunFastLayer2Anim = true;
-            TimerRunFastLayer2Anim = 0.5f;
+            OneTouch();
+            
         }
         else
         {
@@ -97,11 +84,20 @@ public class Player : MonoBehaviour
             {
                 Speed -= Time.deltaTime * SpeedLoss;
             }
+            else
+            {
+                Speed += Time.deltaTime * 0.2f;
+            }
             if (SpeedUp < DefaultSpeedUp)
             {
                 //SpeedUpRecovery();
             }
 
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            SwipeUp();
         }
 
         // Рассчёт скорости анимации бега
@@ -122,7 +118,103 @@ public class Player : MonoBehaviour
         {
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0.0f, Time.deltaTime * 2));
         }
-        
+
+        if (isJump)
+        {
+            animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 1.0f, Time.deltaTime * 2.0f * Speed));
+        }
+        else if (isJumpOver)
+        {
+            animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 0.0f, Time.deltaTime * 1.5f * Speed));
+            if (animator.GetLayerWeight(2) <= 0.08f)
+            {
+                animator.SetLayerWeight(2, 0.0f);
+                isJumpOver = false;
+            }
+        }
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Handle finger movements based on TouchPhase
+            switch (touch.phase)
+            {
+                //When a touch has first been detected, change the message and record the starting position
+                case TouchPhase.Began:
+                    // Record initial touch position.
+                    startPos = touch.position;
+                    break;
+
+                //Determine if the touch is a moving touch
+                case TouchPhase.Moved:
+                    // Determine direction by comparing the current touch position with the initial one
+                    direction = touch.position - startPos;
+                    if (touch.position.y > startPos.y && touch.position.y - startPos.y > Screen.height*0.2)
+                    {
+                        SwipeUp();
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    // Report that the touch has ended when it ends
+                    break;
+            }
+        }
+
+    }
+
+    void OneTouch()
+    {
+        if (Energy > 0)
+        {
+            if (Speed < RangeSpeed.y)
+            {
+                Energy -= 1.0f;
+                Speed += SpeedUp;
+                SpeedUp -= SpeedUp * SpeedUpDecrease;
+                EnergyTimer = DelyRecoveryEnergy;
+            }
+            else
+            {
+                Energy -= 0.5f;
+                EnergyTimer = DelyRecoveryEnergy;
+            }
+            Interface.CalculationSizeEnergyBar();
+        }
+        else
+        {
+            Energy = 0;
+            Interface.CalculationSizeEnergyBar();
+            if (!EnergyBorder.activeSelf)
+            {
+                InterfaceAnimator.Play("energy border");
+            }
+        }
+        SmoothRunFastLayer2Anim = true;
+        TimerRunFastLayer2Anim = 0.5f;
+    }
+
+    void SwipeUp()
+    {
+        if (animator.GetLayerWeight(2) == 0.0f)
+        {
+            animator.SetBool("jump", true);
+            isJumpOver = false;
+            isJump = true;
+        }
+    }
+
+    void JumpAddForce()
+    {
+        rigidbody.AddForce(transform.up * 350, ForceMode.Impulse);
+    }
+
+    void JumpOver()
+    {
+        animator.SetBool("jump", false);
+        isJump = false;
+        isJumpOver = true;
     }
 
     void AnimationStartAnimSpeedZero()
@@ -136,6 +228,15 @@ public class Player : MonoBehaviour
         animator.SetBool("run", true);
         run = true;
         this.GetComponent<Parallax>().enabled = true;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Barrier")
+        {
+            Destroy(collision.gameObject);
+            Speed = Speed * 0.75f;
+        }
     }
     
     
