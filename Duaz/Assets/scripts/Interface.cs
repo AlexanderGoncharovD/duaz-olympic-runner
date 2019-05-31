@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 /*Код делает различные расчеты по интерфейсу */
 public class Interface : MonoBehaviour {
@@ -39,7 +40,8 @@ public class Interface : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
         playerTr = Player.transform;
 
@@ -75,6 +77,10 @@ public class Interface : MonoBehaviour {
             {
                 isResizeEnergy = false;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
 
     }

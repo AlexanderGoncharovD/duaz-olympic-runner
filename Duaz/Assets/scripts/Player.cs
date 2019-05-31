@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -26,13 +27,12 @@ public class Player : MonoBehaviour
     public Animator InterfaceAnimator; //Ссылка на аниматор графического интерфейса
     public GameObject EnergyBorder; // для анимации, когда заканчивается энергия
 
-
-    public Vector2 startPos;
-    public Vector2 direction;
+    public Text debug;
 
     Animator animator;
     Rigidbody rigidbody;
     Vector3 xMovePlayer, xLateMovePlayer; // х Персонажа до и после кадра
+    bool isOneTouch, isTouchHold;
 
     // Use this for initialization
     void Start() {
@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         DefaultSpeedUp = SpeedUp;
         RecoveryEnergy = Energy * 0.15f;
+
+        Input.simulateMouseWithTouches = true;
     }
 
     void FixedUpdate()
@@ -58,14 +60,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetMouseButtonDown(0))
+        if (! isOneTouch)
         {
-            OneTouch();
-            
-        }
-        else
-        {
-            
             if (EnergyTimer > 0)
             {
                 EnergyTimer -= Time.deltaTime;
@@ -80,25 +76,33 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (Speed > RangeSpeed.x)
+            if (!isTouchHold)
             {
-                Speed -= Time.deltaTime * SpeedLoss;
-            }
-            else
-            {
-                Speed += Time.deltaTime * 0.2f;
-            }
-            if (SpeedUp < DefaultSpeedUp)
-            {
-                //SpeedUpRecovery();
+                CalculationSpeed();
             }
 
         }
 
+#if UNITY_EDITOR
         if (Input.GetMouseButtonDown(1))
         {
             SwipeUp();
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            isOneTouch = true;
+            OneTouch();
+        }
+        if (Input.GetMouseButton(0))
+        {
+            isTouchHold = true;
+            HoldTouch();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isTouchHold = false;
+        }
+#endif
 
         // Рассчёт скорости анимации бега
         animator.SetFloat("speed", 0.5f + ((Speed * 100) / (RangeSpeed.y - RangeSpeed.x) * 0.5f) / 100.0f);
@@ -133,52 +137,98 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            // Handle finger movements based on TouchPhase
-            switch (touch.phase)
-            {
-                //When a touch has first been detected, change the message and record the starting position
-                case TouchPhase.Began:
-                    // Record initial touch position.
-                    startPos = touch.position;
-                    break;
-
-                //Determine if the touch is a moving touch
-                case TouchPhase.Moved:
-                    // Determine direction by comparing the current touch position with the initial one
-                    direction = touch.position - startPos;
-                    if (touch.position.y > startPos.y && touch.position.y - startPos.y > Screen.height*0.2)
-                    {
-                        SwipeUp();
-                    }
-                    break;
-
-                case TouchPhase.Ended:
-                    // Report that the touch has ended when it ends
-                    break;
-            }
-        }
+        // Проверка прикосновения к экрану
+        TouchScreen();
 
     }
+    // рассчет скорости бега персонажа
+    void CalculationSpeed()
+    {
+        if (Speed > RangeSpeed.x)
+        {
+            Speed -= Time.deltaTime * SpeedLoss;
+        }
+        else
+        {
+            Speed += Time.deltaTime * 0.2f;
+        }
+        if (SpeedUp < DefaultSpeedUp)
+        {
+            //SpeedUpRecovery();
+        }
+    }
 
+    Vector2 startPos;
+    /*Определение касаний экрана*/
+    void TouchScreen()
+    {
+        debug.text = "Debug:\nКоличество касаний: " + Input.touchCount + "\n";                                          /// DEBUG   DEBUG   DEBUG   DEBUG
+        if (Input.touchCount > 0)
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                // Отслеживание действия касания
+                switch (touch.phase)
+                {
+                    // Если только что докаснулся до экрана
+                    case TouchPhase.Began:
+                        startPos = touch.position;
+                        break;
+
+                    // Если было совершено перемещение пальцем
+                    case TouchPhase.Moved:
+                        // Если свайп вверх и длина свайпа больше 15% высоты экрана
+                        if (touch.position.y > startPos.y && touch.position.y - startPos.y > Screen.height * 0.15f)
+                        {
+                            debug.text += touch.deltaPosition.magnitude / touch.deltaTime;                              /// DEBUG   DEBUG   DEBUG   DEBUG
+                            // Если это был быстрый свайп
+                            if (touch.deltaPosition.magnitude / touch.deltaTime >= 600)
+                            {
+                                SwipeUp();
+                            }
+                        }
+                        break;
+
+                    case TouchPhase.Stationary:
+                        debug.text += "Touch hold";                                                                    /// DEBUG   DEBUG   DEBUG   DEBUG
+                        isTouchHold = true;
+                        HoldTouch();
+                        break;
+
+                    // Если палец был убран с экрана
+                    case TouchPhase.Ended:
+                        // Если отпускание пальца лежит в доступном радиусе (1% от высоты экрана) от прикосновения пальца до экрана
+                        if ((touch.position-startPos).magnitude <= Screen.height * 0.01f)
+                        {
+                            isOneTouch = true;
+                            OneTouch();
+                        }
+                        isTouchHold = false;
+                        break;
+                }
+            }
+        }
+    }
+
+    /*рассчет действия на разовое нажатие на экран (ускорение)*/
     void OneTouch()
     {
         if (Energy > 0)
         {
+            // Если скорость меньше максимальной
             if (Speed < RangeSpeed.y)
             {
+                // уменьшение запаса выносливости и увеличение текущей скорости
                 Energy -= 1.0f;
                 Speed += SpeedUp;
+                // уменьшение индекса ускорения и запуск таймер восстновления выносливости
                 SpeedUp -= SpeedUp * SpeedUpDecrease;
                 EnergyTimer = DelyRecoveryEnergy;
             }
             else
             {
                 Energy -= 0.5f;
-                EnergyTimer = DelyRecoveryEnergy;
+                //EnergyTimer = DelyRecoveryEnergy;
             }
             Interface.CalculationSizeEnergyBar();
         }
@@ -193,6 +243,26 @@ public class Player : MonoBehaviour
         }
         SmoothRunFastLayer2Anim = true;
         TimerRunFastLayer2Anim = 0.5f;
+
+        isOneTouch = false;
+    }
+
+    /*Если удержание пальца на экарне*/
+    void HoldTouch()
+    {
+        Energy -= 0.5f * Time.deltaTime;
+        TimerRunFastLayer2Anim = 0.5f;
+        if (Energy <= 0)
+        {
+            isTouchHold = false;
+            TimerRunFastLayer2Anim = 0.0f;
+            CalculationSpeed();
+        }
+        else
+        {
+            SmoothRunFastLayer2Anim = true;
+        }
+        Interface.CalculationSizeEnergyBar();
     }
 
     void SwipeUp()
