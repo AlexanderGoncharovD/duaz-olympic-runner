@@ -117,8 +117,7 @@ public class DecorationGeneration : MonoBehaviour
         /* Ячейка в чанке, в которой будет сгенерирована декорация
          * пример получаемой строки: "25", где 2-номер строки, 5-номер столбца
          * Vector2Int(удаление последнего символа из строки, удаление первого символа из строки) - определение номера строки и номера столбца*/
-        Vector2Int cell = new Vector2Int(int.Parse(AllCells[rndIndexCell].
-            Substring(0, AllCells[1].Length - 1)),
+        Vector2Int cell = new Vector2Int(int.Parse(AllCells[rndIndexCell].Substring(0, AllCells[1].Length - 1)),
                                     int.Parse(AllCells[rndIndexCell].Substring(1)));
         int layer = cell.y; // Определение слоя декорации
 

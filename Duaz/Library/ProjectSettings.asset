@@ -224,7 +224,7 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/lab230/Desktop/BallSizeUp Key (15_09_2018).keystore
+  AndroidKeystoreName: E:/BallSizeUp Key (15_09_2018).keystore
   AndroidKeyaliasName: penguinlab
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

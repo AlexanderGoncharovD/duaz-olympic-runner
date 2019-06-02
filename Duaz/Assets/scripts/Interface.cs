@@ -12,8 +12,9 @@ public class Interface : MonoBehaviour {
     public Transform FinishPoint; // точка финиша
 
     [Header("Метка дистанции до финиша")]
-    public Text DistanceText; // текст дистанции доя финиша
+    public TextMesh DistanceText; // текст дистанции доя финиша
     public int DistanceToFinish; // итог рассчета дистанции до финиша
+    public float DistanceTextToCamera; // расстояние, на которое текст отдален от камеры
     public GameObject UIFinishMarker; // графическая метка до финиша
     int DistanceDeactivedMarker = 30; // дистанция для отключения маркера 
     public bool isShowFinishMarker; // нужно ли показывать метку до финиша
@@ -97,6 +98,7 @@ public class Interface : MonoBehaviour {
         else
         {
             UIFinishMarker.SetActive(true);
+            UIFinishMarker.transform.position = new Vector3(transform.position.x + DistanceTextToCamera, 0.51f, 0);
         }
         DistanceText.text = DistanceToFinish + " m";
     }

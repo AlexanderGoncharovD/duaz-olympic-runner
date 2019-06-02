@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1558696143
+timeCreated: 1559436398
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,7 +57,9 @@ TextureImporter:
     21300100: background_1
     21300102: background_2
     21300104: background_3
-    21300106: barrier
+    21300106: barrier left
+    21300108: barrier right
+    21300110: barrier up
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -869,15 +871,43 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: barrier
+      name: barrier left
       rect:
         serializedVersion: 2
         x: 1558
         y: 951
-        width: 22
-        height: 133
+        width: 16
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: barrier right
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 970
+        width: 16
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: barrier up
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 947
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
