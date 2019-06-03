@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1559436398
+timeCreated: 1559562646
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,6 +60,13 @@ TextureImporter:
     21300106: barrier left
     21300108: barrier right
     21300110: barrier up
+    21300112: lake ground
+    21300114: lake sand
+    21300116: lake water_1
+    21300118: lake water_2
+    21300120: lake water_3
+    21300122: lake water_4
+    21300124: lake water_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -906,6 +913,104 @@ TextureImporter:
         y: 947
         width: 21
         height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake ground
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 1196
+        width: 340
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake sand
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 1315
+        width: 346
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake water_1
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 1513
+        width: 265
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake water_2
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 1581
+        width: 221
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake water_3
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 1647
+        width: 212
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake water_4
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1680
+        width: 198
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lake water_5
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 1734
+        width: 189
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
