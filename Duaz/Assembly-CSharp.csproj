@@ -233,6 +233,7 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\TokenClient.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
      <Compile Include="Assets\GPGSIds.cs" />
+     <Compile Include="Assets\scripts\BarrierProperties.cs" />
      <Compile Include="Assets\scripts\CameraLookAtPlayer.cs" />
      <Compile Include="Assets\scripts\CloudGeneration.cs" />
      <Compile Include="Assets\scripts\DecorationGeneration.cs" />
