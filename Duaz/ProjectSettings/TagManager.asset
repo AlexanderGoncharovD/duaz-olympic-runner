@@ -14,6 +14,10 @@ TagManager:
   - Background_2
   - Layer0
   - Barrier
+  - Cloud
+  - Puddle
+  - Pit
+  - Lake
   layers:
   - Default
   - TransparentFX
@@ -48,9 +52,48 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackDecoration
+    uniqueID: 1578569981
+    locked: 0
+  - name: BeforLine1
+    uniqueID: 233252959
+    locked: 0
+  - name: Line1
+    uniqueID: 3117345759
+    locked: 0
+  - name: AfterLine1
+    uniqueID: 619145273
+    locked: 0
+  - name: BeforLine2
+    uniqueID: 2097035745
+    locked: 0
+  - name: Line2
+    uniqueID: 3676375473
+    locked: 0
+  - name: AfterLine2
+    uniqueID: 1131138553
+    locked: 0
+  - name: BeforLine3
+    uniqueID: 1219598127
+    locked: 0
+  - name: Line3
+    uniqueID: 782716991
+    locked: 0
+  - name: AfterLine3
+    uniqueID: 479146535
+    locked: 0
+  - name: BeforLine4
+    uniqueID: 418066891
+    locked: 0
+  - name: Line4
+    uniqueID: 667928861
+    locked: 0
+  - name: AfterLine4
+    uniqueID: 3805254917
+    locked: 0
+  - name: NearDecoration
+    uniqueID: 2059472797
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: line _3
-    uniqueID: 2059472797
     locked: 0

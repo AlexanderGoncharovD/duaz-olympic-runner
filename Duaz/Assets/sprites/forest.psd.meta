@@ -1,10 +1,10 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1559647274
+timeCreated: 1560201717
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ground
+    21300000: road
     21300002: road
     21300004: sky
     21300006: tree_1
@@ -67,6 +67,7 @@ TextureImporter:
     21300120: lake water_3
     21300122: lake water_4
     21300124: lake water_5
+    21300126: puddle
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -150,27 +151,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground
+      name: road
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1266
-        height: 553
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: road
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 554
-        width: 1266
-        height: 70
+        height: 617
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1011,6 +998,20 @@ TextureImporter:
         y: 1734
         width: 189
         height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: puddle
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 1155
+        width: 247
+        height: 123
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

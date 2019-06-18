@@ -10,10 +10,11 @@ public class CameraLookAtPlayer : MonoBehaviour
     public float smooth = 1.0f; // скорость сглаживания приследования 
     public float DistanceFromStart = 4.0f; // Дистаниция, которую игрок пробегает до начала приследования камерой
     public float SpeedMoveCamera; // Скорость перемещения камера за кадр
+    public bool isReset; // Перезапуск слежения камеры за персонажем
     public Interface Interface;
     Vector3 xMoveCamera, xLateMoveCamera; // х камеры до и после кадра
 
-    bool isLookAt = true; // нужно ли в анный момент следить за игроком
+    public bool isLookAt = true; // нужно ли в анный момент следить за игроком
     Vector3 playerStartPoint; // точка, из которой старует игрок
     Camera camera;
     Transform MainCamera;
@@ -34,12 +35,41 @@ public class CameraLookAtPlayer : MonoBehaviour
         // Слежение камеры за игрком
         if (isLookAt)
         {
-            // Если игрок стартанул и пробежал больше указаной дистанции, то скорость прислеживания камеры постепенно увеличивается
-            if ((playerStartPoint - Player.position).magnitude > DistanceFromStart)
+            if (!isReset)
+            {
+                /* формула позиции у камеры size min 5 и max 7 - берется процент умножается на процент от min -1,5 max -2.4
+                 * и все это вычитается из max 2.4 и прибаляется индекс 0.9 потому что камера плавно перемещается и нужен запас расстояния*/
+                if (Camera.position.y > -2.3f - ((-0.9f / 100) * ((100 * (camera.orthographicSize - 5)) / 2)) + 0.9f)
+                {
+                    // Если игрок стартанул и пробежал больше указаной дистанции, то скорость прислеживания камеры постепенно увеличивается
+                    if ((playerStartPoint - Player.position).magnitude > DistanceFromStart)
+                    {
+                        smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    if (smooth >= 0.01f)
+                    {
+                        smooth = Mathf.Lerp(smooth, 0, Time.deltaTime * 10);
+                    }
+                    else
+                    {
+                        smooth = 0.0f;
+                        isLookAt = false;
+                    }
+                }
+            }
+            else
             {
                 smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
+                if (smooth >= 1.0f)
+                {
+                    isReset = false;
+                }
             }
 
+            
             // Плавное ускорение приследования камеры за игроком
             Camera.position = new Vector3(Mathf.Lerp(Camera.position.x, Player.position.x, Time.deltaTime * smooth),
                 Mathf.Lerp(Camera.position.y, Player.position.y, Time.deltaTime * smooth*3), -10);

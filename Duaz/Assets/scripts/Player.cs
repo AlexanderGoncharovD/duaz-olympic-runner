@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     float TimerRunFastLayer2Anim; // Время поистечению которого анимацинной слой ускорения становится прозрачным
     public bool isJump = false, isJumpOver = false; // используется в анимации при прыжке
     public float RolledUpTime; // Время, которое персонаж проезжает в лежачем положении (подкат)
+    public bool isPitDown; // Если персонаж упал в яму
+    public float TimeForRespawnPit = 3.0f; // Время для возрождения из ямы 
 
     public Interface Interface; // ссылка на скрипт
     public Animator InterfaceAnimator; //Ссылка на аниматор графического интерфейса
@@ -30,12 +32,25 @@ public class Player : MonoBehaviour
 
     public Text debug;
 
+    [Header("Other objects")]
+    public GameObject UILineRespawn; // UI элемент шкала возрождения персонажа после падения в яму
+    public GameObject UILineScale; // Изменение размера шкалы времени для возрождения
+
     Animator animator;
     Rigidbody rigidbody;
     Vector3 xMovePlayer, xLateMovePlayer; // х Персонажа до и после кадра
-    bool isOneTouch, isTouchHold;
-    bool isCollisionWithBarrier; // Столкновение с препятствием
-    bool isRolledUp; // Подкат
+    bool isOneTouch, isTouchHold,
+        isCollisionWithBarrier, // Столкновение с препятствием
+        isCollisionStandingSlipPuddle, // Скольжение по луже стоя
+        isCollisionDownSlipPuddle,
+        isCollisionPitDown, // Падени в яму
+        isRolledUp, // Подкат
+        isEnableDivingAnimation, // Плавное включение анимации с погружение под воду в озере
+        isDisableDivingAnimation; // плавное отключение анимации с погружение под воду в озере
+    float timerPitDown; // Таймер, после которого начинается возрождения персонажа
+    float timeRespawnPit = 3.0f; // Время возрождения после попадания в яму
+    Transform PositionPitRespawn; // Точка респавна после падения в яму
+    Vector3 StartPositionCharacter; // Стартовая позиция персонажа нужна для респавна из ямы (используется только Y)
 
     // Use this for initialization
     void Start() {
@@ -47,6 +62,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         DefaultSpeedUp = SpeedUp;
         RecoveryEnergy = Energy * 0.15f;
+        StartPositionCharacter = transform.position; // Стартовая позиция персонажа нужна для респавна из ямы (используется только Y)
 
         Input.simulateMouseWithTouches = true;
     }
@@ -62,29 +78,54 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // рассчёт ускорения
-        if (! isOneTouch)
+        if (isPitDown) // Если персонаж упал в яму
         {
-            if (EnergyTimer > 0)
+            if (timerPitDown > 0)
             {
-                EnergyTimer -= Time.deltaTime;
+                timerPitDown -= Time.deltaTime;
             }
             else
             {
-                if (Energy < MaxEnergy)
+                if (!UILineRespawn.activeSelf && timeRespawnPit == TimeForRespawnPit)
                 {
-                    Energy += RecoveryEnergy * Time.deltaTime;
-                    SpeedUp = Mathf.Lerp(SpeedUp, SpeedUpMax, Time.deltaTime);
-                    Interface.CalculationSizeEnergyBar();
+                    UILineRespawn.SetActive(true);
+                }
+                if (timeRespawnPit > 0)
+                {
+                    timeRespawnPit -= Time.deltaTime;
+                    UILineScale.transform.localScale = new Vector3((timeRespawnPit * 1.0f) / TimeForRespawnPit, 1f, 1f);
+                }
+                else
+                {
+                    StartCoroutine(CharacterRespawnFromThePit()); // Респавн из ямы
                 }
             }
-
-            if (!isTouchHold)
+        }
+        else
+        {
+            // рассчёт ускорения
+            if (!isOneTouch)
             {
-                CalculationSpeed();
-            }
+                if (EnergyTimer > 0)
+                {
+                    EnergyTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    if (Energy < MaxEnergy)
+                    {
+                        Energy += RecoveryEnergy * Time.deltaTime;
+                        SpeedUp = Mathf.Lerp(SpeedUp, SpeedUpMax, Time.deltaTime);
+                        Interface.CalculationSizeEnergyBar();
+                    }
+                }
 
+                if (!isTouchHold)
+                {
+                    CalculationSpeed();
+                }
+
+            }
         }
 
 #if UNITY_EDITOR
@@ -142,6 +183,33 @@ public class Player : MonoBehaviour
 
         // процедура настройки прозрачности анимационного слоя при столкновении
         CollisionWithBarrier();
+
+        // Если персонаж подскользулся на луже стоя
+        if (isCollisionStandingSlipPuddle)
+        {
+            CollisionStandingSlipPuddle();
+        }
+        // Если персонаж упал в яму
+        if (isCollisionPitDown)
+        {
+            CollisionPitDown();
+        }
+
+        // Плавное ВКЛЮЧЕНИЕ анимации погружения под воду в озере
+        if (isEnableDivingAnimation)
+        {
+            animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), 1.0f, Time.deltaTime * 10));
+        }
+        // Плавное ВЫКЛЮЧЕНИЕ анимации погружения под воду в озере
+        if (isDisableDivingAnimation)
+        {
+            animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), .0f, Time.deltaTime * 10));
+            if (animator.GetLayerWeight(8) <= 0.05f)
+            {
+                isDisableDivingAnimation = false;
+                animator.SetBool("diving", false);
+            }
+        }
     }
     // рассчет скорости бега персонажа
     void CalculationSpeed()
@@ -218,41 +286,51 @@ public class Player : MonoBehaviour
     /*рассчет действия на разовое нажатие на экран (ускорение)*/
     void OneTouch()
     {
-        // Если персонаж не в подкате
-        if (!isRolledUp)
+        if (isPitDown) // Если персонаж упал в яму
         {
-            if (Energy > 0)
+            if (UILineRespawn.activeSelf)
             {
-                // Если скорость меньше максимальной
-                if (Speed < RangeSpeed.y)
+                timeRespawnPit -= TimeForRespawnPit / 20.0f;
+            }
+        }
+        else
+        {
+            // Если персонаж не в подкате
+            if (!isRolledUp)
+            {
+                if (Energy > 0)
                 {
-                    // уменьшение запаса выносливости и увеличение текущей скорости
-                    Energy -= 1.0f;
-                    Speed += SpeedUp;
-                    // уменьшение индекса ускорения и запуск таймер восстновления выносливости
-                    SpeedUp -= SpeedUp * SpeedUpDecrease;
-                    EnergyTimer = DelyRecoveryEnergy;
+                    // Если скорость меньше максимальной
+                    if (Speed < RangeSpeed.y)
+                    {
+                        // уменьшение запаса выносливости и увеличение текущей скорости
+                        Energy -= 1.0f;
+                        Speed += SpeedUp;
+                        // уменьшение индекса ускорения и запуск таймер восстновления выносливости
+                        SpeedUp -= SpeedUp * SpeedUpDecrease;
+                        EnergyTimer = DelyRecoveryEnergy;
+                    }
+                    else
+                    {
+                        Energy -= 0.5f;
+                        //EnergyTimer = DelyRecoveryEnergy;
+                    }
+                    Interface.CalculationSizeEnergyBar();
                 }
                 else
                 {
-                    Energy -= 0.5f;
-                    //EnergyTimer = DelyRecoveryEnergy;
+                    Energy = 0;
+                    Interface.CalculationSizeEnergyBar();
+                    if (!EnergyBorder.activeSelf)
+                    {
+                        InterfaceAnimator.Play("energy border");
+                    }
                 }
-                Interface.CalculationSizeEnergyBar();
+                SmoothRunFastLayer2Anim = true;
+                TimerRunFastLayer2Anim = 0.5f;
             }
-            else
-            {
-                Energy = 0;
-                Interface.CalculationSizeEnergyBar();
-                if (!EnergyBorder.activeSelf)
-                {
-                    InterfaceAnimator.Play("energy border");
-                }
-            }
-            SmoothRunFastLayer2Anim = true;
-            TimerRunFastLayer2Anim = 0.5f;
+            isOneTouch = false;
         }
-        isOneTouch = false;
     }
 
     /*Если удержание пальца на экарне*/
@@ -356,6 +434,33 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Если персонаж подскользнулся на луже стоя
+    float timerSlipPuddle = .5f; // время проигрывания анимации скольжения по луже 
+    void CollisionStandingSlipPuddle()
+    {
+        if (timerSlipPuddle > 0)
+        {
+            animator.SetLayerWeight(5, Mathf.Lerp(animator.GetLayerWeight(5), 1.0f, Time.deltaTime * Speed));
+            timerSlipPuddle -= Time.deltaTime;
+        }
+        else
+        {
+            animator.SetLayerWeight(5, Mathf.Lerp(animator.GetLayerWeight(5), .0f, Time.deltaTime * Speed));
+            if (animator.GetLayerWeight(5) <= 0.05f)
+            {
+                animator.SetLayerWeight(5, .0f);
+                timerSlipPuddle = .5f;
+                isCollisionStandingSlipPuddle = false;
+            }
+        }
+    }
+
+    // Если пресонаж упал в яму
+    void CollisionPitDown()
+    {
+        animator.SetLayerWeight(6, Mathf.Lerp(animator.GetLayerWeight(6), 1.0f, Time.deltaTime * 10));
+    }
+
     /*процедура настройки прозрачности анимационного слоя при подкате*/
     void RolledUp()
     {
@@ -393,6 +498,24 @@ public class Player : MonoBehaviour
         this.GetComponent<Parallax>().enabled = true;
     }
 
+    // Респавн из ямы
+    IEnumerator CharacterRespawnFromThePit()
+    {
+        UILineRespawn.SetActive(false);
+        GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<CameraLookAtPlayer>().isLookAt = true;
+        isCollisionPitDown = false;
+        Speed = 5.0f;
+        isPitDown = false;
+        animator.SetLayerWeight(6,.0f);
+        transform.position = new Vector3(PositionPitRespawn.position.x, StartPositionCharacter.y, PositionPitRespawn.position.z);
+        GetComponent<CameraLookAtPlayer>().isReset = true;
+        animator.SetLayerWeight(7, 1.0f);
+        Energy = MaxEnergy;
+        yield return new WaitForSeconds(1.5f);
+        animator.SetLayerWeight(7, .0f);
+    }
+
     // Проверка столкновений
     void OnCollisionEnter(Collision collision)
     {
@@ -407,7 +530,51 @@ public class Player : MonoBehaviour
             }
             isCollisionWithBarrier = true;
         }
+        else if (collision.collider.tag == "Puddle") // Скольжение по луже
+        {
+            collision.collider.enabled = false;
+            collision.collider.GetComponent<ParticleSystem>().Play();
+            Speed -= .75f;
+
+            if (isRolledUp)
+            {
+                isCollisionDownSlipPuddle = true;
+            }
+            else
+            {
+                isCollisionStandingSlipPuddle = true;
+            }
+        }
+        else if (collision.collider.tag == "Pit") // Падение в яму
+        {
+            collision.collider.enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            isCollisionPitDown = true;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.velocity = new Vector3(-Speed*.65f, -10.0f, 0);
+            Speed -= .0f;
+            timerPitDown = 1.5f; //Назначение таймера, после которого начинается возрождения персонажа
+            timeRespawnPit = TimeForRespawnPit;
+            isPitDown = true;
+            PositionPitRespawn = collision.transform;
+            //GetComponent<CameraLookAtPlayer>().isLookAt = false;
+        }
+        else if (collision.collider.tag == "Lake")
+        {
+            collision.collider.enabled = false;
+            Speed = 2.0f;
+            animator.SetBool("diving", true);
+            isDisableDivingAnimation = false;
+            isEnableDivingAnimation = true;
+        }
     }
     
+    void DisableDivingAnimation()
+    {
+        Speed = 5.0f;
+        isEnableDivingAnimation = false;
+        isDisableDivingAnimation = true;
+        Energy = MaxEnergy;
+    }
     
 }

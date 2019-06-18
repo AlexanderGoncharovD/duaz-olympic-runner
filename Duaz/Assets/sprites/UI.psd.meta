@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: e4e786311ed03ca458b22c3b07102567
-timeCreated: 1559200609
+timeCreated: 1560723140
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: finish marker
     21300002: Energy
     21300004: energy border
+    21300006: line
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -127,6 +128,20 @@ TextureImporter:
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: line
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 454
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

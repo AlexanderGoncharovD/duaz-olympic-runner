@@ -11,9 +11,30 @@ public class Parallax : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-        Layers[0] = GameObject.FindGameObjectWithTag("Layer3");
-        Layers[1] = GameObject.FindGameObjectWithTag("Layer4");
-        Layers[2] = GameObject.FindGameObjectWithTag("Layer5");
+        Layers[0] = new GameObject();
+        Layers[0].name = Layers[0].tag = "Layer3";
+        Layers[1] = new GameObject();
+        Layers[1].name = Layers[1].tag = "Layer4";
+        Layers[2] = new GameObject();
+        Layers[2].name = Layers[2].tag = "Layer5";
+
+        GameObject[] layer3 = GameObject.FindGameObjectsWithTag("Background_1");
+        foreach(GameObject Object in layer3)
+        {
+            Object.transform.parent = Layers[0].transform;
+        }
+
+        GameObject[] layer4 = GameObject.FindGameObjectsWithTag("Background_2");
+        foreach (GameObject Object in layer4)
+        {
+            Object.transform.parent = Layers[1].transform;
+        }
+
+        GameObject[] layer5 = GameObject.FindGameObjectsWithTag("Cloud");
+        foreach (GameObject Object in layer5)
+        {
+            Object.transform.parent = Layers[2].transform;
+        }
     }
 
     // Update is called once per frame
