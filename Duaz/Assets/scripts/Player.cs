@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public float RolledUpTime; // Время, которое персонаж проезжает в лежачем положении (подкат)
     public bool isPitDown; // Если персонаж упал в яму
     public float TimeForRespawnPit = 3.0f; // Время для возрождения из ямы 
+    public float TimeForRespawnOak = 3.0f; // Время для возрождения из ямы 
 
     public Interface Interface; // ссылка на скрипт
     public Animator InterfaceAnimator; //Ссылка на аниматор графического интерфейса
@@ -46,10 +47,16 @@ public class Player : MonoBehaviour
         isCollisionPitDown, // Падени в яму
         isRolledUp, // Подкат
         isEnableDivingAnimation, // Плавное включение анимации с погружение под воду в озере
-        isDisableDivingAnimation; // плавное отключение анимации с погружение под воду в озере
+        isDisableDivingAnimation, // плавное отключение анимации с погружение под воду в озере
+        isClashWithsOak, // столкноение с веткой дуба
+        isFinish; // Если игрок финишировал
     float timerPitDown; // Таймер, после которого начинается возрождения персонажа
     float timeRespawnPit = 3.0f; // Время возрождения после попадания в яму
-    Transform PositionPitRespawn; // Точка респавна после падения в яму
+    float timerOakDown; // Таймер, после которого начинается возрождения персонажа
+    float timeRespawnOak = 3.0f; // Время возрождения после попадания в яму
+    float speedLineRespawnPit; // Скорость изменения длины линии при респавне из ямы
+    float SpeedClashWithsOak; // Скорость переключения на слой с анимацией столкновения
+    Transform PositionRespawn; // Точка респавна после столкновения/падения
     Vector3 StartPositionCharacter; // Стартовая позиция персонажа нужна для респавна из ямы (используется только Y)
 
     // Use this for initialization
@@ -93,11 +100,40 @@ public class Player : MonoBehaviour
                 if (timeRespawnPit > 0)
                 {
                     timeRespawnPit -= Time.deltaTime;
-                    UILineScale.transform.localScale = new Vector3((timeRespawnPit * 1.0f) / TimeForRespawnPit, 1f, 1f);
+                    if (UILineScale.transform.localScale.x > (timeRespawnPit * 1.0f) / TimeForRespawnPit)
+                    {
+                        UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
+                    }
                 }
                 else
                 {
                     StartCoroutine(CharacterRespawnFromThePit()); // Респавн из ямы
+                }
+            }
+        }
+        else if(isClashWithsOak)
+        {
+            if (timerOakDown > 0)
+            {
+                timerOakDown -= Time.deltaTime;
+            }
+            else
+            {
+                if (!UILineRespawn.activeSelf && timeRespawnOak == TimeForRespawnOak)
+                {
+                    UILineRespawn.SetActive(true);
+                }
+                if (timeRespawnOak > 0)
+                {
+                    timeRespawnOak -= Time.deltaTime;
+                    if (UILineScale.transform.localScale.x > (timeRespawnOak * 1.0f) / TimeForRespawnOak)
+                    {
+                        UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
+                    }
+                }
+                else
+                {
+                    StartCoroutine(CharacterRespawnOak()); // Респавн из ямы
                 }
             }
         }
@@ -122,7 +158,13 @@ public class Player : MonoBehaviour
 
                 if (!isTouchHold)
                 {
-                    CalculationSpeed();
+                    if (!isClashWithsOak)
+                    {
+                        if (!isFinish)
+                        {
+                            CalculationSpeed();
+                        }
+                    }
                 }
 
             }
@@ -210,6 +252,24 @@ public class Player : MonoBehaviour
                 animator.SetBool("diving", false);
             }
         }
+
+        // Если игрок столкнулся с веткой дуба
+        if (isClashWithsOak)
+        {
+            animator.SetLayerWeight(9, Mathf.Lerp(animator.GetLayerWeight(9), 1.0f, Time.deltaTime * SpeedClashWithsOak*1.5f));
+        }
+
+        // Если игрок финишировал
+        if (isFinish)
+        {
+            animator.SetLayerWeight(10, Mathf.Lerp(animator.GetLayerWeight(10), 1.0f, Time.deltaTime * 10));
+            Speed = Mathf.Lerp(Speed, .0f, Time.deltaTime * 10);
+            if (Speed <= 0.3f)
+            {
+                Speed = .0f;
+            }
+            //GetComponent<CameraLookAtPlayer>().isLookAt = false;
+        }
     }
     // рассчет скорости бега персонажа
     void CalculationSpeed()
@@ -226,6 +286,11 @@ public class Player : MonoBehaviour
         {
             //SpeedUpRecovery();
         }
+    }
+    // Респаун игрока после столкнвоения/падения
+    void RespawnPlayer()
+    {
+
     }
 
     Vector2 startPos;
@@ -293,10 +358,17 @@ public class Player : MonoBehaviour
                 timeRespawnPit -= TimeForRespawnPit / 20.0f;
             }
         }
+        else if (isClashWithsOak)
+        {
+            if (UILineRespawn.activeSelf)
+            {
+                timeRespawnOak -= TimeForRespawnOak / 20.0f;
+            }
+        }
         else
         {
-            // Если персонаж не в подкате
-            if (!isRolledUp)
+            // Если персонаж не в подкате и не финишировал
+            if (!isRolledUp && !isFinish)
             {
                 if (Energy > 0)
                 {
@@ -508,12 +580,30 @@ public class Player : MonoBehaviour
         Speed = 5.0f;
         isPitDown = false;
         animator.SetLayerWeight(6,.0f);
-        transform.position = new Vector3(PositionPitRespawn.position.x, StartPositionCharacter.y, PositionPitRespawn.position.z);
+        transform.position = new Vector3(PositionRespawn.position.x, StartPositionCharacter.y, PositionRespawn.position.z);
         GetComponent<CameraLookAtPlayer>().isReset = true;
         animator.SetLayerWeight(7, 1.0f);
         Energy = MaxEnergy;
+        UILineScale.transform.localScale = new Vector3(1f, 1f, 1f);
         yield return new WaitForSeconds(1.5f);
         animator.SetLayerWeight(7, .0f);
+    }
+
+    //Респаун после столкновения с деревом
+    IEnumerator CharacterRespawnOak()
+    {
+        UILineRespawn.SetActive(false); // Отключение канваса с шкалой возрождения
+        isClashWithsOak = false; // отключение всех элементов после столкновения с деревом
+        GetComponent<CameraLookAtPlayer>().isLookAt = true;
+        Speed = 5.0f; 
+        animator.SetBool("clash_oak", false); // отключение переменной в анимации
+        animator.SetLayerWeight(9, .0f); // и отключение анимационного слоя с падением
+        transform.position = new Vector3(PositionRespawn.position.x, StartPositionCharacter.y, PositionRespawn.position.z);
+        animator.SetLayerWeight(7, 1.0f); // включение анимации мигания при возрождениии
+        Energy = MaxEnergy; // восстановление энергии
+        UILineScale.transform.localScale = new Vector3(1f, 1f, 1f); // восстановление канваса шкалы возрождения
+        yield return new WaitForSeconds(1.5f); // задержка анимации возрождения
+        animator.SetLayerWeight(7, .0f); // отключение слоя с анимацией мигания при возрождении
     }
 
     // Проверка столкновений
@@ -554,9 +644,9 @@ public class Player : MonoBehaviour
             rigidbody.velocity = new Vector3(-Speed*.65f, -10.0f, 0);
             Speed -= .0f;
             timerPitDown = 1.5f; //Назначение таймера, после которого начинается возрождения персонажа
-            timeRespawnPit = TimeForRespawnPit;
+            timeRespawnPit = TimeForRespawnPit; // Рестарт таймера возрождения
             isPitDown = true;
-            PositionPitRespawn = collision.transform;
+            PositionRespawn = collision.transform;
             //GetComponent<CameraLookAtPlayer>().isLookAt = false;
         }
         else if (collision.collider.tag == "Lake")
@@ -566,6 +656,25 @@ public class Player : MonoBehaviour
             animator.SetBool("diving", true);
             isDisableDivingAnimation = false;
             isEnableDivingAnimation = true;
+        }
+        else if (collision.collider.tag == "Oak")
+        {
+            collision.collider.enabled = false;
+            animator.SetBool("clash_oak", true);
+            SpeedClashWithsOak = Speed;
+            Speed = .0f;
+            animator.SetLayerWeight(2, .0f); // отключение анимационного слоя прыжка
+            timerOakDown = 1.5f; //Назначение таймера, после которого начинается возрождения персонажа
+            timeRespawnOak = TimeForRespawnOak; // Рестарт таймера возрождения
+            PositionRespawn = collision.transform;
+            isClashWithsOak = true;
+            GetComponent<CameraLookAtPlayer>().isLookAt = false;
+        }
+        else if (collision.collider.tag == "Finish")
+        {
+            collision.collider.enabled = false;
+            isFinish = true;
+            animator.SetBool("win", true);
         }
     }
     

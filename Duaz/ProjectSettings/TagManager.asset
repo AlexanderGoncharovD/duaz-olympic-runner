@@ -18,6 +18,7 @@ TagManager:
   - Puddle
   - Pit
   - Lake
+  - Oak
   layers:
   - Default
   - TransparentFX

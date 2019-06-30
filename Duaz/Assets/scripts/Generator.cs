@@ -70,6 +70,7 @@ public class Generator : MonoBehaviour
     public float BarrierPercentage = 0.1f; // Процент заполнения барьерами (число от длины дороги 200 * 10% = 20 препятствий)
     [Space]
     public ChunkDicoretionGenerator[] Chunks;
+    public Transform Finish;
     public GameObject EmptyDecoration; // Болванка для генерации декораций
 
     int[] Road; // id локаций
@@ -85,6 +86,7 @@ public class Generator : MonoBehaviour
     void Start()
     {
         Generations();
+        Finish.position = new Vector3(LengthRoad - 50, 0, 0);
     }
 
     /*Генерация элементов дороги локации*/
@@ -109,7 +111,7 @@ public class Generator : MonoBehaviour
         var NumberOfLocations = 0; // количество генерируемых локаций
         var IndexElement = 0; // индекс для генерации элемента дороги 
         // Необходимо количестов элементов дороги для всей длины локации
-        NumberOfLocations = Mathf.CeilToInt(LengthRoad / Locations[0].Length);
+        NumberOfLocations = Mathf.CeilToInt(LengthRoad / Locations[0].Length) + 1;
         Road = new int[NumberOfLocations]; // количество id всех генерируемых дорог
         RoadTransform = new Transform[NumberOfLocations];
 

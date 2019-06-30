@@ -12,6 +12,7 @@ public class CameraLookAtPlayer : MonoBehaviour
     public float SpeedMoveCamera; // Скорость перемещения камера за кадр
     public bool isReset; // Перезапуск слежения камеры за персонажем
     public Interface Interface;
+    public bool isFinish; // если игрок финишировал
     Vector3 xMoveCamera, xLateMoveCamera; // х камеры до и после кадра
 
     public bool isLookAt = true; // нужно ли в анный момент следить за игроком
@@ -35,7 +36,7 @@ public class CameraLookAtPlayer : MonoBehaviour
         // Слежение камеры за игрком
         if (isLookAt)
         {
-            if (!isReset)
+            if (!isReset && !isFinish)
             {
                 /* формула позиции у камеры size min 5 и max 7 - берется процент умножается на процент от min -1,5 max -2.4
                  * и все это вычитается из max 2.4 и прибаляется индекс 0.9 потому что камера плавно перемещается и нужен запас расстояния*/
@@ -62,10 +63,17 @@ public class CameraLookAtPlayer : MonoBehaviour
             }
             else
             {
-                smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
-                if (smooth >= 1.0f)
+                if (isFinish)
                 {
-                    isReset = false;
+                    smooth = Mathf.Lerp(smooth, 0.0f, Time.deltaTime*2);
+                }
+                else
+                {
+                    smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
+                    if (smooth >= 1.0f)
+                    {
+                        isReset = false;
+                    }
                 }
             }
 

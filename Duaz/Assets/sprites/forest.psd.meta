@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0dec9af62317b074796d645a647792c3
-timeCreated: 1560201717
+timeCreated: 1560991299
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -68,6 +68,7 @@ TextureImporter:
     21300122: lake water_4
     21300124: lake water_5
     21300126: puddle
+    21300128: finish
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -1014,6 +1015,20 @@ TextureImporter:
         height: 123
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: finish
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 1156
+        width: 127
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
