@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 988
-  m_MinSize: {x: 973, y: 392}
-  m_MaxSize: {x: 22008, y: 14042}
+  m_MinSize: {x: 969, y: 392}
+  m_MaxSize: {x: 22004, y: 14042}
   vertical: 0
-  controlID: 66
+  controlID: 73
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1318
     height: 988
-  m_MinSize: {x: 696, y: 392}
-  m_MaxSize: {x: 18006, y: 14042}
+  m_MinSize: {x: 692, y: 392}
+  m_MaxSize: {x: 18002, y: 14042}
   vertical: 1
-  controlID: 67
+  controlID: 74
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,10 +155,10 @@ MonoBehaviour:
     y: 0
     width: 1318
     height: 580
-  m_MinSize: {x: 696, y: 271}
-  m_MaxSize: {x: 18006, y: 10021}
+  m_MinSize: {x: 692, y: 271}
+  m_MaxSize: {x: 18002, y: 10021}
   vertical: 0
-  controlID: 68
+  controlID: 75
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 876
     height: 580
-  m_MinSize: {x: 264, y: 241}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 260, y: 220}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
@@ -326,10 +326,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -640
-    m_HBaseRangeMax: 640
-    m_VBaseRangeMin: -360
-    m_VBaseRangeMax: 360
+    m_HBaseRangeMin: -1920
+    m_HBaseRangeMax: 1920
+    m_VBaseRangeMin: -1080
+    m_VBaseRangeMax: 1080
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -348,7 +348,7 @@ MonoBehaviour:
       y: 17
       width: 872
       height: 542
-    m_Scale: {x: 0.68125, y: 0.68125}
+    m_Scale: {x: 0.22708334, y: 0.22708336}
     m_Translation: {x: 436, y: 271}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -356,12 +356,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -640
-      y: -397.7982
-      width: 1280
-      height: 795.5964
+      x: -1920
+      y: -1193.3944
+      width: 3840
+      height: 2386.7888
     m_MinimalGUI: 1
-  m_defaultScale: 0.68125
+  m_defaultScale: 0.22708334
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 872, y: 559}
@@ -406,18 +406,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/animations/athlete
+    - Assets/characters
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Program Files\Unity\Projects\olympic-runner\Duaz
+  m_LastProjectPath: C:\olympic-runner\Duaz
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 2a280000
     m_LastClickedID: 10282
-    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d0290000e0290000042a00000a2a0000142a0000e82a0000f42a00000e2b0000502b0000542b0000562b0000662b00006a2b0000a22b00003c3100003e31000040310000423100004431000046310000
+    m_ExpandedIDs: 00000000302e0000ba3100003e320000583200007032000082320000983200009c320000d6320000ec320000fc320000083300000c330000523300005c33000070330000a4330000a6330000b0330000b4330000e833000020350000223500002435000026350000283500002a350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -442,24 +442,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 60}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d0290000e0290000042a00000a2a0000142a0000e82a0000f42a00000e2b0000502b0000542b0000562b0000662b00006a2b0000a22b00003c3100003e31000040310000423100004431000046310000
+    m_ExpandedIDs: 00000000302e0000ba3100003e320000583200007032000082320000983200009c320000d6320000ec320000fc320000083300000c330000523300005c33000070330000a4330000a6330000b0330000b4330000e833000020350000223500002435000026350000283500002a350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: dummy
+      m_OriginalName: dummy
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 13104
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -823,23 +823,23 @@ MonoBehaviour:
     height: 559
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 30330000
     m_LastClickedID: 0
-    m_ExpandedIDs: bab8f3ffa8b9f3ffd6baf3ff2efbffff38fbffff3afbffff3cfbffff44fbffff46fbffff48fbffff64fbffff86fbffffa6fbffff00000000622c0000882c0000
+    m_ExpandedIDs: 82e8ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: leg_left
-      m_OriginalName: leg_left
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -1212
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
