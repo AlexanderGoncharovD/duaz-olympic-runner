@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 442}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1038
-  m_MinSize: {x: 950, y: 442}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 126
+  controlID: 167
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 392}
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
-  controlID: 127
+  controlID: 88
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 271}
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
-  controlID: 84
+  controlID: 89
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -326,10 +326,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -1920
-    m_HBaseRangeMax: 1920
-    m_VBaseRangeMin: -1080
-    m_VBaseRangeMax: 1080
+    m_HBaseRangeMin: -640
+    m_HBaseRangeMax: 640
+    m_VBaseRangeMin: -360
+    m_VBaseRangeMax: 360
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -348,7 +348,7 @@ MonoBehaviour:
       y: 17
       width: 872
       height: 542
-    m_Scale: {x: 0.22708334, y: 0.22708336}
+    m_Scale: {x: 0.68125, y: 0.68125}
     m_Translation: {x: 436, y: 271}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -356,12 +356,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1920
-      y: -1193.3944
-      width: 3840
-      height: 2386.7888
+      x: -640
+      y: -397.7982
+      width: 1280
+      height: 795.5964
     m_MinimalGUI: 1
-  m_defaultScale: 0.22708334
+  m_defaultScale: 0.7057292
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 872, y: 559}
@@ -411,13 +411,13 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\olympic-runner\Duaz
+  m_LastProjectPath: C:\Program Files\Unity\Projects\olympic-runner\Duaz
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 2a280000
     m_LastClickedID: 10282
-    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d4290000e4290000082a00000e2a0000182a0000a22a0000ec2a0000f82a0000122b0000542b0000582b00005a2b00006a2b00006e2b0000a62b0000ee320000f0320000f2320000f4320000f6320000f8320000
+    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d4290000e4290000082a00000e2a0000182a0000a22a0000ec2a0000f82a0000122b0000542b0000582b00005a2b00006a2b00006e2b0000a62b00004e3100005031000052310000543100005631000058310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -445,18 +445,18 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 60}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d4290000e4290000082a00000e2a0000182a0000a22a0000ec2a0000f82a0000122b0000542b0000582b00005a2b00006a2b00006e2b0000a62b0000ee320000f0320000f2320000f4320000f6320000f8320000
+    m_ExpandedIDs: 00000000fe2800001c29000044290000562900006c29000070290000aa290000d4290000e4290000082a00000e2a0000182a0000a22a0000ec2a0000f82a0000122b0000542b0000582b00005a2b00006a2b00006e2b0000a62b00004e3100005031000052310000543100005631000058310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: athlete_sprites
-      m_OriginalName: athlete_sprites
+      m_Name: dummy
+      m_OriginalName: dummy
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10918
+      m_UserData: 10914
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -823,9 +823,9 @@ MonoBehaviour:
     height: 559
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7ee9ffff
-    m_LastClickedID: -5762
-    m_ExpandedIDs: 9afaffffa4faffffa6faffffa8faffffb0faffffb2faffffb4faffffd0fafffff2faffff8efbffffa6fbffff00000000ca2c0000
+    m_SelectedIDs: 04330000
+    m_LastClickedID: 0
+    m_ExpandedIDs: a6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
