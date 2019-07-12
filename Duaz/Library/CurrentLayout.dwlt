@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 167
+  controlID: 138
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 392}
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
-  controlID: 111
+  controlID: 60
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 271}
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
-  controlID: 112
+  controlID: 61
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 876
     height: 644
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
@@ -265,7 +265,7 @@ MonoBehaviour:
   - {fileID: 22}
   - {fileID: 23}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 06000000000000000000000013000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 06000000000000000000000010000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
       width: 1280
       height: 889.5413
     m_MinimalGUI: 1
-  m_defaultScale: 0.68125
+  m_defaultScale: 0.7890625
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 872, y: 623}
@@ -405,19 +405,18 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders:
-    - Assets/animations/athlete
+    m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Program Files\Unity\Projects\olympic-runner\Duaz
+  m_LastProjectPath: C:\olympic-runner\Duaz
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 2a280000
     m_LastClickedID: 10282
-    m_ExpandedIDs: 00000000fe2800000c290000362900006829000072290000962900009a290000d6290000022a0000122a0000362a00003c2a0000d02a0000162b00001c2b0000282b0000442b0000682b00008a2b00008e2b0000902b0000a62b0000ac2b0000c42b0000e62b00001e3200002032000022320000243200002632000028320000
+    m_ExpandedIDs: 000000005a2d0000f0310000a43200009e330000b8330000d0330000da330000e2330000f4330000f833000032340000483400005834000064340000683400008c340000aa340000b0340000ba340000ce34000002350000043500000e3500001235000028350000463500008a3600008c3600008e360000903600009236000094360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -445,7 +444,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe2800000c290000362900005e2900006829000072290000962900009a290000d6290000022a0000122a0000362a00003c2a0000d02a0000162b00001c2b0000282b0000442b0000682b00008a2b00008e2b0000902b0000a62b0000ac2b0000c42b0000e62b00001e3200002032000022320000243200002632000028320000
+    m_ExpandedIDs: 000000005a2d0000f0310000a43200009e330000b8330000d0330000da330000e2330000f4330000f833000032340000483400005834000064340000683400008c340000aa340000b0340000ba340000ce34000002350000043500000e3500001235000028350000463500008a3600008c3600008e360000903600009236000094360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -525,16 +524,16 @@ MonoBehaviour:
     x: 240
     y: 91
     width: 872
-    height: 657
+    height: 623
   m_SceneLighting: 0
-  lastFramingTime: 20565.113293020364
+  lastFramingTime: 766.0819683803753
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.906724, y: 0.7474965, z: -1.0107422}
+    m_Target: {x: 0.5674298, y: -0.4636573, z: -1.0485326}
     speed: 2
-    m_Value: {x: 9.906724, y: 0.7474965, z: -1.0107422}
+    m_Value: {x: 0.5674298, y: -0.4636573, z: -1.0485326}
   m_RenderMode: 31
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -561,9 +560,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.7090793
+    m_Target: 6.743416
     speed: 2
-    m_Value: 6.7090793
+    m_Value: 6.743416
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -823,23 +822,23 @@ MonoBehaviour:
     height: 623
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 902c0000
-    m_LastClickedID: 11408
-    m_ExpandedIDs: def9ffffe0f9ffffe2f9fffff2f9fffffef9ffff02faffff06faffff10faffff14faffff18faffff42faffff4efaffffa6fbffff00000000ee2c0000
+    m_SelectedIDs: 98350000
+    m_LastClickedID: 13720
+    m_ExpandedIDs: 7ee4ffffeee5ffff00000000dc350000f2350000f635000002360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: finish UI marker
+      m_OriginalName: finish UI marker
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 13724
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -935,34 +934,34 @@ MonoBehaviour:
     - {fileID: 1107165481999115346, guid: 40d1f6203be750c4d84cf75edaae34f9, type: 2}
     m_ValueSerializationHelper:
     - {x: 764.80005, y: 156}
-    - {x: 588.60004, y: 254.19995}
+    - {x: 741.60004, y: 173.8}
     - {x: 768.60004, y: 128}
     - {x: 768.60004, y: 128}
-    - {x: 761.60004, y: 201.20001}
-    - {x: 588.60004, y: 190.19995}
-    - {x: 543.2001, y: 92.400024}
-    - {x: 588.60004, y: 141.20001}
+    - {x: 739.60004, y: 193.8}
+    - {x: 741.60004, y: 109.80001}
+    - {x: 739.60004, y: 217.8}
+    - {x: 741.60004, y: 109.80001}
     - {x: 739.60004, y: 180.20001}
-    - {x: 588.60004, y: 190.19995}
-    - {x: 588.60004, y: 190.19995}
-    - {x: 586.60004, y: 254.19995}
-    - {x: 586.60004, y: 254.19995}
+    - {x: 741.60004, y: 109.80001}
+    - {x: 741.60004, y: 109.80001}
+    - {x: 739.60004, y: 173.8}
+    - {x: 739.60004, y: 173.8}
     - {x: 739.60004, y: 181.40002}
-    - {x: 586.60004, y: 254.19995}
+    - {x: 739.60004, y: 173.8}
+    - {x: 741.60004, y: 173.8}
+    - {x: 741.60004, y: 109.80001}
+    - {x: 741.60004, y: 109.80001}
+    - {x: 741.60004, y: 181.8}
+    - {x: 741.60004, y: 173.8}
+    - {x: 741.60004, y: 173.8}
     - {x: 588.60004, y: 205.20001}
-    - {x: 588.60004, y: 141.20001}
-    - {x: 588.60004, y: 53.000015}
-    - {x: 588.60004, y: 262.19995}
     - {x: 588.60004, y: 205.20001}
-    - {x: 588.60004, y: 205.20001}
-    - {x: 588.60004, y: 205.20001}
-    - {x: 588.60004, y: 205.20001}
+    - {x: 741.60004, y: 109.80001}
     - {x: 588.60004, y: 141.20001}
     - {x: 588.60004, y: 141.20001}
     - {x: 588.60004, y: 141.20001}
     - {x: 588.60004, y: 141.20001}
-    - {x: 588.60004, y: 141.20001}
-    - {x: 588.60004, y: 0}
+    - {x: 741.60004, y: 109.80001}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 0}
   m_BreadCrumbs: []

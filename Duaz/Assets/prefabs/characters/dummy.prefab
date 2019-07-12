@@ -277,6 +277,9 @@ GameObject:
   - component: {fileID: 95363180822881024}
   - component: {fileID: 54311147771926626}
   - component: {fileID: 136803955914271328}
+  - component: {fileID: 114056526861248558}
+  - component: {fileID: 114985104277414958}
+  - component: {fileID: 114529052973080882}
   m_Layer: 0
   m_Name: dummy
   m_TagString: Untagged
@@ -481,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702475978640690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.3, y: 0.302, z: 0}
+  m_LocalPosition: {x: 1.12, y: 0.302, z: -1}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4521940052830382}
@@ -703,6 +706,78 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114056526861248558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702475978640690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f1c05992dec3f4494c00a0a348e208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  RangeSpeed: {x: 5, y: 10}
+  SpeedUp: 0.75
+  SpeedUpDecrease: 0.05
+  SpeedLoss: 0.25
+  MaxEnergy: 10
+  Energy: 10
+  DelyRecoveryEnergy: 2
+  EnergyTimer: 0
+  run: 0
+  RunFast: 0
+  isJump: 0
+  isJumpOver: 0
+  RolledUpTime: 0
+  isPitDown: 0
+  TimeForRespawnPit: 5
+  TimeForRespawnOak: 5
+  Interface: {fileID: 0}
+  InterfaceAnimator: {fileID: 0}
+  EnergyBorder: {fileID: 0}
+  debug: {fileID: 0}
+  UILineRespawn: {fileID: 0}
+  UILineScale: {fileID: 0}
+--- !u!114 &114529052973080882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702475978640690}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15178d90336eb894698ef498e1d5a924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Layers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpeedIndex: 7
+--- !u!114 &114985104277414958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702475978640690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6708ee2c80b83a141a26899efcdf39dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 4421795782335740}
+  Camera: {fileID: 0}
+  smooth: 0.2
+  DistanceFromStart: 4
+  SpeedMoveCamera: 0
+  isReset: 0
+  Interface: {fileID: 0}
+  isFinish: 0
+  isLookAt: 1
 --- !u!136 &136803955914271328
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -715,7 +790,7 @@ CapsuleCollider:
   m_Radius: 0.25
   m_Height: 3.7
   m_Direction: 1
-  m_Center: {x: -0.01, y: -0.1, z: -1}
+  m_Center: {x: -0.01, y: -0.1, z: 0}
 --- !u!212 &212029959747725698
 SpriteRenderer:
   m_ObjectHideFlags: 1
