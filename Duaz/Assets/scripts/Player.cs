@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     bool SmoothRunFastLayer2Anim; // Параметер второго анимациинного слоя на персонаже, параметер отвчает за прозрачность анимационного слоя
     float TimerRunFastLayer2Anim; // Время поистечению которого анимацинной слой ускорения становится прозрачным
     public bool isJump = false, isJumpOver = false; // используется в анимации при прыжке
+    public float JumpForce = 350.0f; // сила прыжка
     public float RolledUpTime; // Время, которое персонаж проезжает в лежачем положении (подкат)
     public bool isPitDown; // Если персонаж упал в яму
     public float TimeForRespawnPit = 3.0f; // Время для возрождения из ямы 
@@ -449,7 +450,7 @@ public class Player : MonoBehaviour
 
     void JumpAddForce()
     {
-        rigidbody.AddForce(transform.up * 350, ForceMode.Impulse);
+        rigidbody.AddForce(transform.up * JumpForce, ForceMode.Impulse);
     }
 
     void JumpOver()
