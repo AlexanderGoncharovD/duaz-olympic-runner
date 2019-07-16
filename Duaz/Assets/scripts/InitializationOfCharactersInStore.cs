@@ -19,9 +19,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
     public float Index = 185.0f; // индекс смещения элемента в магазине
 
     [Space]
-    public Vector2 Range; // Диапазон прокрутки элементов магазин по X от min до max
-    public float CurPosition, // Текущая позиция родительского объекта элементов магазина
-           SpeedSwipe, // Скорость перелистывания родительского объекта элементов магазина
+    public float SpeedSwipe, // Скорость перелистывания родительского объекта элементов магазина
            CurSpeedSwipe; // Изменяемая скорость свайпа    
 
     public Text debug;
@@ -29,8 +27,14 @@ public class InitializationOfCharactersInStore : MonoBehaviour
     private GameObject newElement; // ссылка на только что сгенерированный элемент магазина
     private SettingsElementCharacterInStore parameter; // ссылка на настройки сгенерированного элемента магазина
     private Transform parent; // Родительский объект элементов магазина
-        public bool swipeRight, swipeLeft; // Свайпы для перелистывания элементов меню
-    private bool isRase; // True - скорость свайпа возрастает; False -  скорость свайпа убывает
+    private Vector2 Range; // Диапазон прокрутки элементов магазин по X от min до max
+    private float CurPosition; // Текущая позиция родительского объекта элементов магазина
+    private bool swipe, // Совершо свайп - перелистывание элементов магазина
+        isRase, // True - скорость свайпа возрастает; False -  скорость свайпа убывает
+        moveEndElement; // Перемещение элемента в конечную точку (центр окна) после свайпа
+    private float delta, // Знак свайпа определяющий сторону свайпа
+        newOffset; // Новое смещение для элементов магазина
+    private int idSelectedElement = -1; // активный элемент магазина после сайпа
 
     void Start ()
     {
@@ -75,26 +79,15 @@ public class InitializationOfCharactersInStore : MonoBehaviour
     {
         parent.localPosition = new Vector3(CurPosition, .0f, .0f);
         // Провекрка свайпов
-#if UNITY_ANDROID
         TouchScreen();
-#endif
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
-        {
-            SwipeLeft();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            SwipeRight(600);
-        }
-#endif
-        if (swipeRight)
+
+        if (swipe)
         {
             if (isRase)
             {
                 if(CurSpeedSwipe < SpeedSwipe * 0.75f)
                 {
-                    CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, SpeedSwipe, Time.deltaTime);
+                    CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, SpeedSwipe, Time.deltaTime * 5);
                 }
                 else
                 {
@@ -105,15 +98,38 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             {
                 if (CurSpeedSwipe > SpeedSwipe * 0.15f)
                 {
-                    CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, 0, Time.deltaTime);
+                    CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, 0, Time.deltaTime * 5);
                 }
                 else
                 {
-                    CurSpeedSwipe = 0;
-                    swipeRight = false;
+                    if (idSelectedElement == -1)
+                    {
+                        for (int i = 0; i < Elements.Length; i++)
+                        {
+                            if (Mathf.Abs(CurPosition) >= Elements[i].transform.localPosition.x - Index / 2
+                                && Mathf.Abs(CurPosition) <= Elements[i].transform.localPosition.x + Index / 2)
+                            {
+                                idSelectedElement = i;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        moveEndElement = true;
+                        CurSpeedSwipe = 0;
+                        swipe = false;
+                    }
                 }
             }
-            CurPosition -= CurSpeedSwipe * Time.deltaTime;
+            newOffset = delta * CurSpeedSwipe * Time.deltaTime;
+            if (CurPosition + newOffset > Range.y && CurPosition + newOffset < Range.x)
+            {
+                CurPosition += delta * CurSpeedSwipe * Time.deltaTime;
+            }
+        }
+        if (moveEndElement)
+        {
+            CurPosition = Mathf.Lerp(CurPosition, -Elements[idSelectedElement].transform.localPosition.x, Time.deltaTime * 5f);
         }
     }
 
@@ -130,19 +146,29 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                     // Если только что докаснулся до экрана
                     case TouchPhase.Began:
                         startPos = touch.position;
+                        idSelectedElement = -1;
+                        moveEndElement = false;
                         break;
 
                     // Если было совершено перемещение пальцем
                     case TouchPhase.Moved:
-                        // Если свайп вправо и длина свайпа больше 15% ширины экрана
-                        if (touch.position.x < startPos.x && startPos.x - touch.position.x > Screen.width * 0.15f)
+                        // Если свайп и длина свайпа больше 5% ширины экрана
+                        if (Mathf.Abs(startPos.x - touch.position.x) > Screen.width * 0.05f)
                         {
-                            SwipeRight((touch.deltaPosition.magnitude / touch.deltaTime) / 100);
-                        }
-                        // Если свайп влево и длина свайпа больше 15% ширины экрана
-                        if (touch.position.x > startPos.x && touch.position.x - startPos.x > Screen.width * 0.15f)
-                        {
-                            SwipeLeft();
+                            isRase = true;
+                            swipe = true;
+                            if (touch.deltaPosition.x > 55.0f)
+                            {
+                                delta = 55.0f;
+                            }
+                            else if (touch.deltaPosition.x < -55.0f)
+                            {
+                                delta = -55.0f;
+                            }
+                            else
+                            {
+                                delta = touch.deltaPosition.x;
+                            }
                         }
                         break;
 
@@ -153,22 +179,5 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void SwipeLeft()
-    {
-        swipeLeft = true;
-    }
-
-    private void SwipeRight(float speed)
-    {
-        if (speed > 600)
-        {
-            speed = 600;
-        }
-        SpeedSwipe = speed;
-        debug.text += "\nSpeed Swipe: " + speed;
-        isRase = true;
-        swipeRight = true;
     }
 }
