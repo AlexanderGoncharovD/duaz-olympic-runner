@@ -730,6 +730,7 @@ MonoBehaviour:
   RunFast: 0
   isJump: 0
   isJumpOver: 0
+  JumpForce: 350
   RolledUpTime: 0
   isPitDown: 0
   TimeForRespawnPit: 5

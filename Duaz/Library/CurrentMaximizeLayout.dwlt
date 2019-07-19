@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 59
+  controlID: 913
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -58,10 +58,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -640
-    m_HBaseRangeMax: 640
-    m_VBaseRangeMin: -360
-    m_VBaseRangeMax: 360
+    m_HBaseRangeMin: -1920
+    m_HBaseRangeMax: 1920
+    m_VBaseRangeMin: -1080
+    m_VBaseRangeMax: 1080
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
       y: 17
       width: 962
       height: 625
-    m_Scale: {x: 0.7515625, y: 0.7515625}
+    m_Scale: {x: 0.25052083, y: 0.25052083}
     m_Translation: {x: 481, y: 312.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -88,12 +88,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -640
-      y: -415.8004
-      width: 1280
-      height: 831.6008
+      x: -1920
+      y: -1247.4012
+      width: 3840
+      height: 2494.8025
     m_MinimalGUI: 1
-  m_defaultScale: 0.7515625
+  m_defaultScale: 0.25052083
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 962, y: 642}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 392}
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
-  controlID: 60
+  controlID: 914
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 271}
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
-  controlID: 61
+  controlID: 915
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,18 +212,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/animations/athlete
+    - Assets/characters
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Program Files\Unity\Projects\olympic-runner\Duaz
+  m_LastProjectPath: C:\olympic-runner\Duaz
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 2a280000
     m_LastClickedID: 10282
-    m_ExpandedIDs: 00000000022900007c29000090290000b6290000ba290000f6290000222a0000322a0000562a0000602a0000f42a0000f82a00003a2b0000402b00004c2b0000682b00008c2b0000ae2b0000b22b0000b42b0000ca2b0000d02b0000e82b00000c2c00005c3400005e34000060340000623400006434000066340000
+    m_ExpandedIDs: 000000006a2d00006e2d000016320000cc33000016340000283400003a3400003e340000783400008e3400009e340000a8340000b0340000d4340000f2340000f834000002350000163500004a3500004c350000563500005a350000703500008e350000923800009438000096380000983800009a3800009c380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -248,10 +248,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a22d0000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 00000000022900007c29000090290000b6290000ba290000f6290000222a0000322a0000562a0000602a0000f42a0000f82a00003a2b0000402b00004c2b0000682b00008c2b0000ae2b0000b22b0000b42b0000ca2b0000d02b0000e82b00000c2c00005c3400005e34000060340000623400006434000066340000
+    scrollPos: {x: 0, y: 660}
+    m_SelectedIDs: 6a2d0000
+    m_LastClickedID: 11626
+    m_ExpandedIDs: 000000006a2d00006e2d000016320000cc33000016340000283400003a3400003e340000783400008e3400009e340000a8340000b0340000d4340000f2340000f834000002350000163500004a3500004c350000563500005a350000703500008e350000923800009438000096380000983800009a3800009c380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -276,8 +276,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a22d0000
-    m_LastClickedInstanceID: 11682
+    m_SelectedInstanceIDs: 6a2d0000
+    m_LastClickedInstanceID: 11626
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -335,7 +335,7 @@ MonoBehaviour:
   - {fileID: 11}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 3
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -436,21 +436,21 @@ MonoBehaviour:
     y: 91
     width: 1025
     height: 642
-  m_ResetOnNextRepaint: 0
+  m_ResetOnNextRepaint: 1
   m_IgnoreNextPostprocessEvent: 0
   m_SelectedAssetPath: Assets/characters/athlete_sprites.psd
   m_Selected:
-    m_Name: 
+    m_Name: body_down
     m_OriginalName: 
-    m_Pivot: {x: 0, y: 0}
-    m_Alignment: 0
+    m_Pivot: {x: 0.358428, y: 0.13288206}
+    m_Alignment: 9
     m_Border: {x: 0, y: 0, z: 0, w: 0}
     m_Rect:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 0
-      height: 0
+      width: 74
+      height: 162
     m_Outline: []
     m_PhysicsShape: []
     m_TessellationDetail: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 271
     y: 91
-    width: 1025
+    width: 962
     height: 642
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
@@ -684,9 +684,9 @@ MonoBehaviour:
     height: 642
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a22d0000
-    m_LastClickedID: 11682
-    m_ExpandedIDs: a6fbffff00000000a22d0000b02d0000962e0000f22e0000
+    m_SelectedIDs: 6a2d0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 50e5ffffa6fbffff00000000a22d0000b02d0000962e0000f22e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

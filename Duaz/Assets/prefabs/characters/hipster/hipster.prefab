@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 54701562306406844}
   - component: {fileID: 136323302447566514}
   m_Layer: 0
-  m_Name: PLAYER athlete
+  m_Name: hipster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,9 +641,11 @@ MonoBehaviour:
   RunFast: 0
   isJump: 0
   isJumpOver: 0
+  JumpForce: 350
   RolledUpTime: 0
   isPitDown: 0
   TimeForRespawnPit: 5
+  TimeForRespawnOak: 3
   Interface: {fileID: 0}
   InterfaceAnimator: {fileID: 0}
   EnergyBorder: {fileID: 0}
@@ -668,6 +670,7 @@ MonoBehaviour:
   SpeedMoveCamera: 0
   isReset: 0
   Interface: {fileID: 0}
+  isFinish: 0
   isLookAt: 1
 --- !u!114 &114887320733803444
 MonoBehaviour:

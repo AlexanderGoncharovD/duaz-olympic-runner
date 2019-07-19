@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public struct DateCharacter
 {
     public string Name, Energy, Boost, Respawn; //имя персонажа
-    public GameObject UIprefab; // анимированный префаб персонажа из UI элементов
+    public GameObject UIPrefab; // анимированный префаб персонажа из UI элементов
 }
 
 public class InitializationOfCharactersInStore : MonoBehaviour
 {
+    public int Active; // Номер активной карточки с персонажем
     public DateCharacter[] Character; // список всех персонажей в магазине
     public GameObject Element; // ссылка на балванку элемента магазина
     public GameObject[] Elements; // Массив со всеми элементами магазина
@@ -35,6 +36,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
     private float delta, // Знак свайпа определяющий сторону свайпа
         newOffset; // Новое смещение для элементов магазина
     private int idSelectedElement = -1; // активный элемент магазина после сайпа
+    private int OldActive; // Предыдущая активная карточка персонажа
 
     void Start ()
     {
@@ -62,9 +64,19 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             newElement.transform.parent = parent;
             newElement.transform.localPosition = elementPosition;
             newElement.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+#if UNITY_EDITOR
+            newElement.name = Character[i].Name;
+#endif
             elementPosition += new Vector3(Index, .0f, .0f);
 
             Elements[i] = newElement;
+            // Спаун миниатюры персонажа для карточки в магазине
+            if (Character[i].UIPrefab != null)
+            {
+                newElement = Instantiate(Character[i].UIPrefab, parameter.CharacterPointSpawn.position, Quaternion.identity);
+                newElement.transform.parent = parameter.CharacterPointSpawn;
+            }
+            // Присвоение характеристик для отображения под карточкой в магазине
             parameter.Id = i;
             parameter.Name = Character[i].Name;
             parameter.Energy = Character[i].Energy;
@@ -75,7 +87,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         Destroy(Element);
     }
 
-    void Update ()
+    void Update()
     {
         parent.localPosition = new Vector3(CurPosition, .0f, .0f);
         // Провекрка свайпов
@@ -83,11 +95,13 @@ public class InitializationOfCharactersInStore : MonoBehaviour
 
         if (swipe)
         {
+            OldActive = Active;
             if (isRase)
             {
-                if(CurSpeedSwipe < SpeedSwipe * 0.75f)
+                if (CurSpeedSwipe < SpeedSwipe * 0.9f)
                 {
                     CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, SpeedSwipe, Time.deltaTime * 5);
+
                 }
                 else
                 {
@@ -96,7 +110,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             }
             else
             {
-                if (CurSpeedSwipe > SpeedSwipe * 0.15f)
+                if (CurSpeedSwipe > SpeedSwipe * 0.30f)
                 {
                     CurSpeedSwipe = Mathf.Lerp(CurSpeedSwipe, 0, Time.deltaTime * 5);
                 }
@@ -104,14 +118,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                 {
                     if (idSelectedElement == -1)
                     {
-                        for (int i = 0; i < Elements.Length; i++)
-                        {
-                            if (Mathf.Abs(CurPosition) >= Elements[i].transform.localPosition.x - Index / 2
-                                && Mathf.Abs(CurPosition) <= Elements[i].transform.localPosition.x + Index / 2)
-                            {
-                                idSelectedElement = i;
-                            }
-                        }
+                        idSelectedElement = SearchActiveCard();
                     }
                     else
                     {
@@ -126,7 +133,15 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             {
                 CurPosition += delta * CurSpeedSwipe * Time.deltaTime;
             }
+            // Выводит Id активной карточки
+            Active = SearchActiveCard();
         }
+        IncreaseSizeActiveCard(Active);
+        if (OldActive != Active)
+        {
+            IncreaseSizeActiveCard(OldActive);
+        }
+        // Центрирование ближайшего к центру элемента, когда скорость перемещения всех элементов придельна мала
         if (moveEndElement)
         {
             CurPosition = Mathf.Lerp(CurPosition, -Elements[idSelectedElement].transform.localPosition.x, Time.deltaTime * 5f);
@@ -179,5 +194,46 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Увеличить размер активной карточки персонажа
+    private float sizeCard, minSizeCard = 1.0f, maxSizeCard = 1.1f;
+    private void IncreaseSizeActiveCard(int active)
+    {
+        Debug.Log("x = " + Elements[active].transform.localScale.x + "maxSizeCard = " + maxSizeCard * 0.99f);
+        if (Elements[active].transform.localScale.x < maxSizeCard * 0.99f)
+        {
+            sizeCard = Mathf.Lerp(Elements[active].transform.localScale.x, maxSizeCard, 5 * Time.deltaTime);
+            Elements[active].transform.localScale = new Vector3(sizeCard, sizeCard, sizeCard);
+        }
+    }
+
+    // Уменьшить размер не активной карточки персонажа
+    private void DecreaseSizeActiveCard(int oldActive)
+    {
+
+    }
+
+    /* Поиск активной акрточки с персонажем
+     * Выполняется поиск для дальнейшего масштабирования карточки
+     * Или для дальнейшей активации персонажа*/
+    private int number;
+    private int SearchActiveCard()
+    {
+        for (int i = 0; i < Elements.Length; i++)
+        {
+            if (Mathf.Abs(CurPosition) >= Elements[i].transform.localPosition.x - Index / 2
+                && Mathf.Abs(CurPosition) <= Elements[i].transform.localPosition.x + Index / 2)
+            {
+                number = i;
+            }
+        }
+        return number;
+    }
+
+    //Закрытие окна магазина выбора персонажа
+    public void CloseStore()
+    {
+        gameObject.SetActive(false);
     }
 }
