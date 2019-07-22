@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 99
+  controlID: 65
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 392}
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
-  controlID: 100
+  controlID: 66
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 271}
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
-  controlID: 101
+  controlID: 67
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 966
     height: 663
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -232,8 +232,8 @@ MonoBehaviour:
     y: 0
     width: 310
     height: 663
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -257,8 +257,8 @@ MonoBehaviour:
     y: 663
     width: 1545
     height: 325
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 21}
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 06000000000000000000000010000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 06000000000000000000000013000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -348,20 +348,20 @@ MonoBehaviour:
       y: 17
       width: 962
       height: 625
-    m_Scale: {x: 0.81380206, y: 0.81380206}
-    m_Translation: {x: 480.99997, y: 312.5}
+    m_Scale: {x: 0.7515625, y: 0.7515625}
+    m_Translation: {x: 481, y: 312.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -591.0528
-      y: -384
-      width: 1182.1056
-      height: 768
+      x: -640
+      y: -415.8004
+      width: 1280
+      height: 831.6008
     m_MinimalGUI: 1
-  m_defaultScale: 0.81380206
+  m_defaultScale: 0.7515625
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 962, y: 642}
@@ -406,18 +406,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/fonts
+    - Assets
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\olympic-runner\Duaz
+  m_LastProjectPath: C:\Program Files\Unity\Projects\olympic-runner\Duaz
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 2a280000
     m_LastClickedID: 10282
-    m_ExpandedIDs: 00000000022900007e29000092290000be290000c2290000fe2900002a2a00003a2a00005e2a0000682a0000fc2a0000002b00003c2b0000422b0000482b0000542b0000702b0000942b0000b62b0000ba2b0000bc2b0000d22b0000d82b0000f02b0000142c0000623400006434000066340000683400006a3400006c340000
+    m_ExpandedIDs: 00000000022900003c2900007e29000092290000be290000c2290000fe2900002a2a00003a2a00005e2a0000682a0000fc2a0000002b00003c2b0000422b0000482b0000542b0000702b0000942b0000b62b0000ba2b0000bc2b0000d22b0000d82b0000f02b0000142c00009c3400009e340000a0340000a2340000a4340000a6340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -442,10 +442,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 660}
+    scrollPos: {x: 0, y: 1540}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000022900007e29000092290000be290000c2290000fe2900002a2a00003a2a00005e2a0000682a0000fc2a0000002b00003c2b0000422b0000482b0000542b0000702b0000942b0000b62b0000ba2b0000bc2b0000d22b0000d82b0000f02b0000142c0000623400006434000066340000683400006a3400006c340000
+    m_ExpandedIDs: 00000000022900003c2900007e29000092290000be290000c2290000fe2900002a2a00003a2a00005e2a0000682a0000fc2a0000002b00003c2b0000422b0000482b0000542b0000702b0000942b0000b62b0000ba2b0000bc2b0000d22b0000d82b0000f02b0000142c00009c3400009e340000a0340000a2340000a4340000a6340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -532,9 +532,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 548.2089, y: 356.52676, z: -1.5262899}
+    m_Target: {x: 620.83374, y: 155.0295, z: 4.0625}
     speed: 2
-    m_Value: {x: 548.2089, y: 356.52676, z: -1.5262899}
+    m_Value: {x: 620.83374, y: 155.0295, z: 4.0625}
   m_RenderMode: 31
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -561,9 +561,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 294.7805
+    m_Target: 252.59404
     speed: 2
-    m_Value: 294.7805
+    m_Value: 252.59404
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -600,9 +600,9 @@ MonoBehaviour:
     y: 91
     width: 962
     height: 642
-  m_ResetOnNextRepaint: 0
+  m_ResetOnNextRepaint: 1
   m_IgnoreNextPostprocessEvent: 0
-  m_SelectedAssetPath: Assets/particles/dust.psd
+  m_SelectedAssetPath: Assets/sprites/UI KIT.psd
   m_Selected:
     m_Name: 
     m_OriginalName: 
@@ -823,9 +823,9 @@ MonoBehaviour:
     height: 642
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9251f6ff
-    m_LastClickedID: -634478
-    m_ExpandedIDs: a6fbffff000000006e2d00007c2d0000362e0000822e0000
+    m_SelectedIDs: 782d0000
+    m_LastClickedID: 11640
+    m_ExpandedIDs: a6fbffff00000000782d00008a2d0000542e0000b42e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Inspector
+    m_Text: Debug
     m_Image: {fileID: -6905738622615590433, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
@@ -1030,8 +1030,8 @@ MonoBehaviour:
     y: 91
     width: 373
     height: 967
-  m_ScrollPosition: {x: 0, y: 0}
-  m_InspectorMode: 0
+  m_ScrollPosition: {x: 0, y: 240}
+  m_InspectorMode: 1
   m_PreviewResizer:
     m_CachedPref: 515
     m_ControlHash: -371814159

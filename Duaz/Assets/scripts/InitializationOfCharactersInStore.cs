@@ -21,7 +21,8 @@ public class InitializationOfCharactersInStore : MonoBehaviour
 
     [Space]
     public float SpeedSwipe, // Скорость перелистывания родительского объекта элементов магазина
-           CurSpeedSwipe; // Изменяемая скорость свайпа    
+           CurSpeedSwipe; // Изменяемая скорость свайпа
+    public GameObject ButtonBuy, ButtonUpgrade, ButtonSelect; // Ссылки на объекты кнопок для отображения
 
     public Text debug;
     private Vector3 elementPosition; // позиция сгенерированного эелемнта магазина
@@ -36,7 +37,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
     private float delta, // Знак свайпа определяющий сторону свайпа
         newOffset; // Новое смещение для элементов магазина
     private int idSelectedElement = -1; // активный элемент магазина после сайпа
-    private int OldActive; // Предыдущая активная карточка персонажа
+    private bool resizeCards; // Изменение размеров карточек активных и неактивных
 
     void Start ()
     {
@@ -95,7 +96,6 @@ public class InitializationOfCharactersInStore : MonoBehaviour
 
         if (swipe)
         {
-            OldActive = Active;
             if (isRase)
             {
                 if (CurSpeedSwipe < SpeedSwipe * 0.9f)
@@ -136,15 +136,12 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             // Выводит Id активной карточки
             Active = SearchActiveCard();
         }
-        IncreaseSizeActiveCard(Active);
-        if (OldActive != Active)
-        {
-            IncreaseSizeActiveCard(OldActive);
-        }
+        ReSizeCards(Active);
         // Центрирование ближайшего к центру элемента, когда скорость перемещения всех элементов придельна мала
         if (moveEndElement)
         {
             CurPosition = Mathf.Lerp(CurPosition, -Elements[idSelectedElement].transform.localPosition.x, Time.deltaTime * 5f);
+            ShowBuy();
         }
     }
 
@@ -184,6 +181,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                             {
                                 delta = touch.deltaPosition.x;
                             }
+                            HiddenButtons();
                         }
                         break;
 
@@ -196,22 +194,35 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         }
     }
 
-    // Увеличить размер активной карточки персонажа
-    private float sizeCard, minSizeCard = 1.0f, maxSizeCard = 1.1f;
-    private void IncreaseSizeActiveCard(int active)
+    // Изменение размеров активной и неактивной карточкиперсонажа
+    private float sizeCardActive, sizeCardOldActive, minSizeCard = 1.0f, maxSizeCard = 1.1f;
+    private void ReSizeCards(int active)
     {
-        Debug.Log("x = " + Elements[active].transform.localScale.x + "maxSizeCard = " + maxSizeCard * 0.99f);
         if (Elements[active].transform.localScale.x < maxSizeCard * 0.99f)
         {
-            sizeCard = Mathf.Lerp(Elements[active].transform.localScale.x, maxSizeCard, 5 * Time.deltaTime);
-            Elements[active].transform.localScale = new Vector3(sizeCard, sizeCard, sizeCard);
+            sizeCardActive = Mathf.Lerp(Elements[active].transform.localScale.x, maxSizeCard, 6 * Time.deltaTime);
         }
-    }
+        else
+        {
+            sizeCardActive = 1.1f;
+        }
+        Elements[active].transform.localScale = new Vector3(sizeCardActive, sizeCardActive, sizeCardActive);
 
-    // Уменьшить размер не активной карточки персонажа
-    private void DecreaseSizeActiveCard(int oldActive)
-    {
-
+        for (int i = 0; i < Elements.Length; i++)
+        {
+            if (i != active)
+            {
+                if (Elements[i].transform.localScale.x > minSizeCard * 1.01f)
+                {
+                    sizeCardOldActive = Mathf.Lerp(Elements[i].transform.localScale.x, minSizeCard, 6 * Time.deltaTime);
+                }
+                else
+                {
+                    sizeCardOldActive = 1.0f;
+                }
+                Elements[i].transform.localScale = new Vector3(sizeCardOldActive, sizeCardOldActive, sizeCardOldActive);
+            }
+        }
     }
 
     /* Поиск активной акрточки с персонажем
@@ -229,6 +240,35 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             }
         }
         return number;
+    }
+
+    // Показать кнопку "купить"
+    private void ShowBuy()
+    {
+        ButtonBuy.SetActive(true);
+        ButtonUpgrade.SetActive(false);
+        ButtonSelect.SetActive(false);
+    }
+    // Показать кнопку "улучшить"
+    private void ShowUpgrade()
+    {
+        ButtonUpgrade.SetActive(true);
+        ButtonBuy.SetActive(false);
+        ButtonSelect.SetActive(false);
+    }
+    //Показать кнопку "выбрать"
+    private void ShowSelect()
+    {
+        ButtonSelect.SetActive(true);
+        ButtonBuy.SetActive(false);
+        ButtonUpgrade.SetActive(false);
+    }
+    // Скрыть все кнопки
+    private void HiddenButtons()
+    {
+        ButtonSelect.SetActive(false);
+        ButtonBuy.SetActive(false);
+        ButtonUpgrade.SetActive(false);
     }
 
     //Закрытие окна магазина выбора персонажа
