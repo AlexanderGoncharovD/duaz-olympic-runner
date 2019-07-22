@@ -10,6 +10,9 @@ public class SettingsElementCharacterInStore : MonoBehaviour {
     public Text NameT, EnergyT, BoostT, RespawnT; // текстовые элементы для отображения характеристик в магазине
     public Vector3 EnergyScale, BoostScale, RespawnScale; // Отображение размеров шкалы характеристик от 0 до 1
     public Transform CharacterPointSpawn; // Точка спауна миниатуюр персонажей в магазине
+    public GameObject SelectText; // Текст уведомляющий, что этот персонаж уже выбран
+    public bool isBuy, // Куплен ли этот персонаж
+        isSelected; // Выбран ли это персонаж
 
 
     public void Apply()

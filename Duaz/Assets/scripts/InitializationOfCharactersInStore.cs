@@ -9,11 +9,14 @@ public struct DateCharacter
 {
     public string Name, Energy, Boost, Respawn; //имя персонажа
     public GameObject UIPrefab; // анимированный префаб персонажа из UI элементов
+    public GameObject Prefab; // Игровой префаб персонажа
 }
 
 public class InitializationOfCharactersInStore : MonoBehaviour
 {
     public int Active; // Номер активной карточки с персонажем
+    public GameObject SelectedCharacter; // Выбранный персонаж
+    public int IdSelectedCharacter; // ID выбранного персонажа
     public DateCharacter[] Character; // список всех персонажей в магазине
     public GameObject Element; // ссылка на балванку элемента магазина
     public GameObject[] Elements; // Массив со всеми элементами магазина
@@ -52,10 +55,12 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         parent = Element.transform.parent;
         // Инициализация всех элементво магазина
         GenerationElementsInStore();
+        LoadingCharacterParameters();
 
     }
 
-    void GenerationElementsInStore ()
+    // Инициализация всех персонажей и их карточек в магазине
+    private void GenerationElementsInStore ()
     {
         for(int i = 0; i < Character.Length; i++)
         {
@@ -88,6 +93,14 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         Destroy(Element);
     }
 
+    // Загрузка всех параметров для каждого персонажа
+    private void LoadingCharacterParameters()
+    {
+        Elements[0].GetComponent<SettingsElementCharacterInStore>().isBuy = true;
+        Elements[0].GetComponent<SettingsElementCharacterInStore>().isSelected = true;
+        Elements[0].GetComponent<SettingsElementCharacterInStore>().SelectText.SetActive(true);
+        swipe = true;
+    }
     void Update()
     {
         parent.localPosition = new Vector3(CurPosition, .0f, .0f);
@@ -141,7 +154,23 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         if (moveEndElement)
         {
             CurPosition = Mathf.Lerp(CurPosition, -Elements[idSelectedElement].transform.localPosition.x, Time.deltaTime * 5f);
-            ShowBuy();
+            // Если персонаж куплен, то выводить кнопку улучшения, иначе выводить кнопку покупки
+            if (Elements[Active].GetComponent<SettingsElementCharacterInStore>().isBuy)
+            {
+                // Если персонаж выбран и активрован, то выводится кнопка улучшить, иначе выводится кнопка выбрать
+                if (Elements[Active].GetComponent<SettingsElementCharacterInStore>().isSelected)
+                {
+                    ShowUpgrade();
+                }
+                else
+                {
+                    ShowSelect();
+                }
+            }
+            else
+            {
+                ShowBuy();
+            }
         }
     }
 
@@ -240,6 +269,34 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             }
         }
         return number;
+    }
+
+    // Активация кнопки Покупка персонажа "Купить"
+    public void BuyCharacter()
+    {
+        // Активируется покупка, показывается текст "Выбран" и ставится галочка "Выбран"
+        Elements[Active].GetComponent<SettingsElementCharacterInStore>().isBuy = true;
+        // Выбрать текущего персонажа
+        SelectCharacter();
+    }
+    // Улучшить параметры текущего персонажа5
+    public void UpgradeCharacter()
+    {
+
+    }
+    // Активация кнопки выбрать текущего персонажа
+    public void SelectCharacter()
+    {
+        // У предыдущего активного персонажа отключается текст "Выбран" и снимается галочка "Выбран"
+        Elements[IdSelectedCharacter].GetComponent<SettingsElementCharacterInStore>().SelectText.SetActive(false);
+        Elements[IdSelectedCharacter].GetComponent<SettingsElementCharacterInStore>().isSelected = false;
+        // Определеятся новый выбранный персонаж
+        IdSelectedCharacter = Active;
+        SelectedCharacter = Character[Active].Prefab;
+        Elements[Active].GetComponent<SettingsElementCharacterInStore>().SelectText.SetActive(true);
+        Elements[Active].GetComponent<SettingsElementCharacterInStore>().isSelected = true;
+        // Смена кнопки с "купить на "улучшить"
+        ShowUpgrade();
     }
 
     // Показать кнопку "купить"

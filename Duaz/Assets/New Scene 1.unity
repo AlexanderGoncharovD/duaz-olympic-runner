@@ -2373,57 +2373,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 0
+  SelectedCharacter: {fileID: 0}
+  IdSelectedCharacter: 0
   Character:
   - Name: hipster
     Energy: 50
     Boost: 75
     Respawn: 5
     UIPrefab: {fileID: 1279678565667124, guid: 1511a2839f00927408354ff17bc54280, type: 2}
+    Prefab: {fileID: 0}
+  - Name: dummy
+    Energy: 100
+    Boost: 100
+    Respawn: 3
+    UIPrefab: {fileID: 1630412361154278, guid: 450393a946531594c9478cd9bd50270a, type: 2}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   - Name: dummy
     Energy: 100
     Boost: 100
     Respawn: 3
     UIPrefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
+    Prefab: {fileID: 0}
   Element: {fileID: 1809176324}
   Elements: []
   Index: 190
@@ -4753,7 +4765,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1718468397}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903194691}
+        m_MethodName: SelectCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1718468397
@@ -5239,6 +5262,9 @@ MonoBehaviour:
   BoostScale: {x: 0, y: 0, z: 0}
   RespawnScale: {x: 0, y: 0, z: 0}
   CharacterPointSpawn: {fileID: 1169889820}
+  SelectText: {fileID: 2048642867}
+  isBuy: 0
+  isSelected: 0
 --- !u!1 &1829357155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,7 +5462,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1891572132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903194691}
+        m_MethodName: BuyCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1891572132
