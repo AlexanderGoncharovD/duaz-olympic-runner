@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7607843, g: 0.5184584, b: 0.21176468, a: 1}
+  m_Color: {r: 0.91764706, g: 0.6862745, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2377,64 +2377,16 @@ MonoBehaviour:
   IdSelectedCharacter: 0
   Character:
   - Name: hipster
-    Energy: 50
-    Boost: 75
-    Respawn: 5
+    Energy: {x: 50, y: 150}
+    Boost: {x: 35, y: 150}
+    Respawn: {x: 5, y: 3}
     UIPrefab: {fileID: 1279678565667124, guid: 1511a2839f00927408354ff17bc54280, type: 2}
     Prefab: {fileID: 0}
   - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
+    Energy: {x: 100, y: 200}
+    Boost: {x: 50, y: 200}
+    Respawn: {x: 4, y: 3}
     UIPrefab: {fileID: 1630412361154278, guid: 450393a946531594c9478cd9bd50270a, type: 2}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
-    Prefab: {fileID: 0}
-  - Name: dummy
-    Energy: 100
-    Boost: 100
-    Respawn: 3
-    UIPrefab: {fileID: 0}
     Prefab: {fileID: 0}
   Element: {fileID: 1809176324}
   Elements: []
@@ -5261,6 +5213,9 @@ MonoBehaviour:
   EnergyScale: {x: 0, y: 0, z: 0}
   BoostScale: {x: 0, y: 0, z: 0}
   RespawnScale: {x: 0, y: 0, z: 0}
+  EnergyLine: {fileID: 1031769087}
+  BoostLine: {fileID: 1711312535}
+  RespawnLine: {fileID: 835181383}
   CharacterPointSpawn: {fileID: 1169889820}
   SelectText: {fileID: 2048642867}
   isBuy: 0

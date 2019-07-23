@@ -7,7 +7,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct DateCharacter
 {
-    public string Name, Energy, Boost, Respawn; //имя персонажа
+    public string Name; //имя персонажа
+    public Vector2 Energy, Boost, Respawn; // Характеристики персонажа
     public GameObject UIPrefab; // анимированный префаб персонажа из UI элементов
     public GameObject Prefab; // Игровой префаб персонажа
 }
@@ -85,9 +86,12 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             // Присвоение характеристик для отображения под карточкой в магазине
             parameter.Id = i;
             parameter.Name = Character[i].Name;
-            parameter.Energy = Character[i].Energy;
-            parameter.Boost = Character[i].Boost;
-            parameter.Respawn = Character[i].Respawn;
+            parameter.Energy = Character[i].Energy.x + "";
+            parameter.Boost = Character[i].Boost.x + "";
+            parameter.Respawn = Character[i].Respawn.x + "";
+            parameter.EnergyScale = new Vector3(((1.0f * Character[i].Energy.x * 100) / Character[i].Energy.y) / 100, 1.0f, 1.0f);
+            parameter.BoostScale = new Vector3(((1.0f * Character[i].Boost.x * 100) / Character[i].Boost.y) / 100, 1.0f, 1.0f);
+            parameter.RespawnScale = new Vector3(((1.0f * Character[i].Respawn.y * 100) / Character[i].Respawn.x) / 100, 1.0f, 1.0f);
             parameter.Apply();
         }
         Destroy(Element);
