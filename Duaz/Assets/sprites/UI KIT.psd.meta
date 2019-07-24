@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e4e786311ed03ca458b22c3b07102567
-timeCreated: 1563172292
+timeCreated: 1563975374
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,14 @@ TextureImporter:
     21300026: background selected character
     21300028: dropdown
     21300030: dropdown_2
+    21300032: button background
+    21300034: button icon
+    21300036: button push
+    21300038: characters store icon
+    21300040: button dollar icon
+    21300042: button check mark icon
+    21300044: button upgrade icon
+    21300046: button start game icon
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -307,7 +315,7 @@ TextureImporter:
         width: 15
         height: 668
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -321,7 +329,119 @@ TextureImporter:
         width: 871
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button background
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 1
+        width: 223
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button icon
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 1
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button push
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: characters store icon
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button dollar icon
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 55
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button check mark icon
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 54
+        width: 51
+        height: 49
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button upgrade icon
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 0
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button start game icon
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 104
+        width: 70
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

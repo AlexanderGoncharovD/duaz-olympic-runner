@@ -26,6 +26,8 @@ public class CameraLookAtPlayer : MonoBehaviour
         playerStartPoint = Player.position;
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camera = MainCamera.gameObject.GetComponent<Camera>();
+        Interface = camera.GetComponent<Interface>();
+        Camera = MainCamera.parent;
     }
 
     // Update is called once per frame

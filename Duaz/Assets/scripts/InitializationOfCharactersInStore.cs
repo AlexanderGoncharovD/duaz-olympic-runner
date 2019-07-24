@@ -9,6 +9,7 @@ public struct DateCharacter
 {
     public string Name; //имя персонажа
     public Vector2 Energy, Boost, Respawn; // Характеристики персонажа
+    public int Price; // Цена персонажа или уего улчшение
     public GameObject UIPrefab; // анимированный префаб персонажа из UI элементов
     public GameObject Prefab; // Игровой префаб персонажа
 }
@@ -92,6 +93,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             parameter.EnergyScale = new Vector3(((1.0f * Character[i].Energy.x * 100) / Character[i].Energy.y) / 100, 1.0f, 1.0f);
             parameter.BoostScale = new Vector3(((1.0f * Character[i].Boost.x * 100) / Character[i].Boost.y) / 100, 1.0f, 1.0f);
             parameter.RespawnScale = new Vector3(((1.0f * Character[i].Respawn.y * 100) / Character[i].Respawn.x) / 100, 1.0f, 1.0f);
+            parameter.Price = Character[i].Price;
             parameter.Apply();
         }
         Destroy(Element);
@@ -301,6 +303,23 @@ public class InitializationOfCharactersInStore : MonoBehaviour
         Elements[Active].GetComponent<SettingsElementCharacterInStore>().isSelected = true;
         // Смена кнопки с "купить на "улучшить"
         ShowUpgrade();
+        //Создание игрока на беговой дорожке
+        InitializationPlayer();
+    }
+
+    private void InitializationPlayer()
+    {
+        GameObject oldPlayer = GameObject.FindGameObjectWithTag("Player");
+        Transform startPoint = GameObject.FindGameObjectWithTag("StartPoint").transform;
+        Interface Interface = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Interface>();
+        if (oldPlayer != null)
+        {
+            Destroy(oldPlayer);
+        }
+        GameObject newPlayer = Instantiate(SelectedCharacter, startPoint.position, Quaternion.identity);
+        Interface.Player = newPlayer;
+        Interface.PlayerScript = newPlayer.GetComponent<Player>();
+        Interface.Start();
     }
 
     // Показать кнопку "купить"

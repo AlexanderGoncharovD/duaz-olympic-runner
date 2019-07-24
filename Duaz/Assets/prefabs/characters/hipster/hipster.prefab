@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 136323302447566514}
   m_Layer: 0
   m_Name: hipster
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,7 +446,7 @@ Transform:
   - {fileID: 4248692269163002}
   - {fileID: 4273673912306166}
   m_Father: {fileID: 4876778739112376}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4459257527470686
 Transform:
@@ -499,7 +499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4876778739112376}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4624713898913998
 Transform:
@@ -538,7 +538,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 4876778739112376}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4876778739112376
 Transform:
@@ -547,14 +547,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262173597510346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 0, z: 0}
+  m_LocalPosition: {x: -0.47, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
-  - {fileID: 4988151937680802}
   - {fileID: 4850201626158854}
+  - {fileID: 4988151937680802}
   - {fileID: 4217853948205640}
-  - {fileID: 4614085984621966}
   - {fileID: 4456966004024150}
+  - {fileID: 4614085984621966}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -569,7 +569,7 @@ Transform:
   m_LocalScale: {x: 4.343982, y: 4.343982, z: 4.343982}
   m_Children: []
   m_Father: {fileID: 4876778739112376}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4991878021929500
 Transform:
@@ -607,7 +607,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262173597510346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e2bb809bac1294a4984486fc2b4d9907, type: 2}
   m_CullingMode: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
   RolledUpTime: 0
   isPitDown: 0
   TimeForRespawnPit: 5
-  TimeForRespawnOak: 3
+  TimeForRespawnOak: 5
   Interface: {fileID: 0}
   InterfaceAnimator: {fileID: 0}
   EnergyBorder: {fileID: 0}
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262173597510346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6708ee2c80b83a141a26899efcdf39dd, type: 3}
   m_Name: 

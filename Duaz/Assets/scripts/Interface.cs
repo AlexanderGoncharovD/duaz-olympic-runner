@@ -27,56 +27,66 @@ public class Interface : MonoBehaviour {
     Vector2 CurTargetSize; // текущий и к какому размеру стремится шкала энергии
     float EnergyMax; // один процент от всей энергии
     public float EnergySmooth = 1.0f; // скорость сглаживания изменения размера шкалы
+    public GameObject EnergyBorder; //Объект шкалы энергии
 
     public Player PlayerScript; // ссылка на экзмеплер скрипта игрока
     Transform playerTr; // трансформ игрока
 
-	// Use this for initialization
-	void Start () {
+    [Header("Other objects")]
+    public GameObject UILineRespawn; // UI элемент шкала возрождения персонажа после падения в яму
+    public GameObject UILineScale; // Изменение размера шкалы времени для возрождения
+
+    // Use this for initialization
+    public void Start () {
 
         isShowFinishMarker = true;
-        EnergyMax = PlayerScript.MaxEnergy;
-        EnergyPercent = (EnergyMax * 100.0f) / EnergyMax;
-        CalculationSizeEnergyBar();
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-        playerTr = Player.transform;
-
-        // рассчет и показ дистанции до финиша
-        if (isShowFinishMarker)
+        if (Player != null)
         {
-            CalculateDistanceToFinish();
+            EnergyMax = PlayerScript.MaxEnergy;
+            EnergyPercent = (EnergyMax * 100.0f) / EnergyMax;
+            CalculationSizeEnergyBar();
         }
+    }
 
-        // присвоение нового размера шкале энргии
-        if (isResizeEnergy)
+    // Update is called once per frame
+    void Update()
+    {
+        if(Player != null)
         {
-            EnergySprite.localScale = Vector3.Lerp(new Vector3(EnergySprite.localScale.x, 1, 1), new Vector3(CurTargetSize.y, 1, 1), Time.deltaTime * EnergySmooth);
-            if (EnergySprite.localScale.x < 0)
+            playerTr = Player.transform;
+
+            // рассчет и показ дистанции до финиша
+            if (isShowFinishMarker)
             {
-                EnergySprite.localScale = new Vector3(0, 1, 1);
+                CalculateDistanceToFinish();
             }
-            if (EnergyText.activeSelf)
+
+            // присвоение нового размера шкале энргии
+            if (isResizeEnergy)
             {
-                if (Math.Round(EnergySprite.localScale.x, 2)  <= 0.13f)
+                EnergySprite.localScale = Vector3.Lerp(new Vector3(EnergySprite.localScale.x, 1, 1), new Vector3(CurTargetSize.y, 1, 1), Time.deltaTime * EnergySmooth);
+                if (EnergySprite.localScale.x < 0)
                 {
-                    EnergyText.SetActive(false);
+                    EnergySprite.localScale = new Vector3(0, 1, 1);
                 }
-            }
-            else
-            {
-                if (Math.Round(EnergySprite.localScale.x, 2) > 0.13f)
+                if (EnergyText.activeSelf)
                 {
-                    EnergyText.SetActive(true);
+                    if (Math.Round(EnergySprite.localScale.x, 2) <= 0.13f)
+                    {
+                        EnergyText.SetActive(false);
+                    }
                 }
-            }
-            if (EnergySprite.localScale.x == CurTargetSize.y)
-            {
-                isResizeEnergy = false;
+                else
+                {
+                    if (Math.Round(EnergySprite.localScale.x, 2) > 0.13f)
+                    {
+                        EnergyText.SetActive(true);
+                    }
+                }
+                if (EnergySprite.localScale.x == CurTargetSize.y)
+                {
+                    isResizeEnergy = false;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))

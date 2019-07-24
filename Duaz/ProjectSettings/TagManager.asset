@@ -19,6 +19,10 @@ TagManager:
   - Pit
   - Lake
   - Oak
+  - StartPoint
+  - EnergyBorder
+  - LineRespawn
+  - Canvas
   layers:
   - Default
   - TransparentFX

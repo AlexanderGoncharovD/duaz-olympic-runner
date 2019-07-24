@@ -62,6 +62,12 @@ public class Player : MonoBehaviour
 
     // Use this for initialization
     void Start() {
+        // Поиск необходимых объектов
+        Interface = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Interface>();
+        InterfaceAnimator = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Animator>();
+        EnergyBorder = Interface.EnergyBorder;
+        UILineRespawn = Interface.UILineRespawn;
+        UILineScale = Interface.UILineScale;
 
         Energy = MaxEnergy;
         animator = this.GetComponent<Animator>();
@@ -298,7 +304,7 @@ public class Player : MonoBehaviour
     /*Определение касаний экрана*/
     void TouchScreen()
     {
-        debug.text = "Debug:\nКоличество касаний: " + Input.touchCount + "\n";                                          /// DEBUG   DEBUG   DEBUG   DEBUG
+        //debug.text = "Debug:\nКоличество касаний: " + Input.touchCount + "\n";                                          /// DEBUG   DEBUG   DEBUG   DEBUG
         if (Input.touchCount > 0)
         {
             foreach (Touch touch in Input.touches)
