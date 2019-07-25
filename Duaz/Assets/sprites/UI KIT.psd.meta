@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e4e786311ed03ca458b22c3b07102567
-timeCreated: 1563975374
+timeCreated: 1564040451
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,6 +28,7 @@ TextureImporter:
     21300042: button check mark icon
     21300044: button upgrade icon
     21300046: button start game icon
+    21300048: button location icon
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -442,6 +443,20 @@ TextureImporter:
         height: 55
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: button location icon
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 58
+        width: 49
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

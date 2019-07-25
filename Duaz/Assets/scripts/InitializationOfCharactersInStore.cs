@@ -83,6 +83,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             {
                 newElement = Instantiate(Character[i].UIPrefab, parameter.CharacterPointSpawn.position, Quaternion.identity);
                 newElement.transform.parent = parameter.CharacterPointSpawn;
+                newElement.transform.localScale = new Vector3(0.3545806f, 0.3545806f, 0.3545806f);
             }
             // Присвоение характеристик для отображения под карточкой в магазине
             parameter.Id = i;

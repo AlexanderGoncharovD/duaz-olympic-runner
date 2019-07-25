@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -661,6 +662,16 @@ public class Player : MonoBehaviour
             collision.collider.enabled = false;
             Speed = 2.0f;
             animator.SetBool("diving", true);
+            /* Расчёт с какого места воспроизводить анимацию погружения под воду
+             * рассчитываются начальная и конечная точки коллайдера озера:
+             * Берётся центральная точка коллайдера min = центр - пол ширины коллайдера, max = центр + пол ширины коллайдера*/
+            Vector2 positionMinMax = new Vector2(collision.collider.transform.position.x - collision.collider.transform.localScale.x / 2,
+                collision.collider.transform.position.x + collision.collider.transform.localScale.x / 2);
+            /* рассчитывается позиция игрока относительно точки столкновения с коллайдером озера
+             * вычитается min коллайдера озера и прибавляется радиус коллайдера игрока*/
+            float curPosition = (float)Math.Round(transform.position.x - positionMinMax.x + GetComponent<CapsuleCollider>().radius, 1);
+            /* нормализуется анимация погружения и с какого места её запускать, через процентное соотношение относительно точек min и max коллайдера озера*/
+            animator.SetFloat("divingNormalized", ((curPosition * 100) / (positionMinMax.y - positionMinMax.x)) / 100);
             isDisableDivingAnimation = false;
             isEnableDivingAnimation = true;
         }
