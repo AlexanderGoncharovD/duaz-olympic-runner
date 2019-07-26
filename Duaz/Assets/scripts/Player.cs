@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public int Id; // Индивидуальный номер персонажа
+    public bool isGame; // Если началась игра
     public float Speed; // текущая скорость персонажа
     public Vector2 RangeSpeed = new Vector2(2, 5); // Минимальная и максимальная скорость игрока
     public float SpeedUp = 2.0f; // Ускорение при разовом нажатии
@@ -18,9 +20,9 @@ public class Player : MonoBehaviour
     public float DelyRecoveryEnergy; // временная здаержка восстновления шкалы енергииж
     float RecoveryEnergy; // Значение восстановления энергии
     public float EnergyTimer;
-    public bool run;
-    public bool RunFast;
-    bool SmoothRunFastLayer2Anim; // Параметер второго анимациинного слоя на персонаже, параметер отвчает за прозрачность анимационного слоя
+    public bool run,
+        RunFast,
+        SmoothRunFastLayer2Anim; // Параметер второго анимациинного слоя на персонаже, параметер отвчает за прозрачность анимационного слоя
     float TimerRunFastLayer2Anim; // Время поистечению которого анимацинной слой ускорения становится прозрачным
     public bool isJump = false, isJumpOver = false; // используется в анимации при прыжке
     public float JumpForce = 350.0f; // сила прыжка
@@ -93,190 +95,193 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPitDown) // Если персонаж упал в яму
+        if (isGame)
         {
-            if (timerPitDown > 0)
+            if (isPitDown) // Если персонаж упал в яму
             {
-                timerPitDown -= Time.deltaTime;
-            }
-            else
-            {
-                if (!UILineRespawn.activeSelf && timeRespawnPit == TimeForRespawnPit)
+                if (timerPitDown > 0)
                 {
-                    UILineRespawn.SetActive(true);
-                }
-                if (timeRespawnPit > 0)
-                {
-                    timeRespawnPit -= Time.deltaTime;
-                    if (UILineScale.transform.localScale.x > (timeRespawnPit * 1.0f) / TimeForRespawnPit)
-                    {
-                        UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
-                    }
+                    timerPitDown -= Time.deltaTime;
                 }
                 else
                 {
-                    StartCoroutine(CharacterRespawnFromThePit()); // Респавн из ямы
-                }
-            }
-        }
-        else if(isClashWithsOak)
-        {
-            if (timerOakDown > 0)
-            {
-                timerOakDown -= Time.deltaTime;
-            }
-            else
-            {
-                if (!UILineRespawn.activeSelf && timeRespawnOak == TimeForRespawnOak)
-                {
-                    UILineRespawn.SetActive(true);
-                }
-                if (timeRespawnOak > 0)
-                {
-                    timeRespawnOak -= Time.deltaTime;
-                    if (UILineScale.transform.localScale.x > (timeRespawnOak * 1.0f) / TimeForRespawnOak)
+                    if (!UILineRespawn.activeSelf && timeRespawnPit == TimeForRespawnPit)
                     {
-                        UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
+                        UILineRespawn.SetActive(true);
                     }
-                }
-                else
-                {
-                    StartCoroutine(CharacterRespawnOak()); // Респавн из ямы
-                }
-            }
-        }
-        else
-        {
-            // рассчёт ускорения
-            if (!isOneTouch)
-            {
-                if (EnergyTimer > 0)
-                {
-                    EnergyTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    if (Energy < MaxEnergy)
+                    if (timeRespawnPit > 0)
                     {
-                        Energy += RecoveryEnergy * Time.deltaTime;
-                        SpeedUp = Mathf.Lerp(SpeedUp, SpeedUpMax, Time.deltaTime);
-                        Interface.CalculationSizeEnergyBar();
-                    }
-                }
-
-                if (!isTouchHold)
-                {
-                    if (!isClashWithsOak)
-                    {
-                        if (!isFinish)
+                        timeRespawnPit -= Time.deltaTime;
+                        if (UILineScale.transform.localScale.x > (timeRespawnPit * 1.0f) / TimeForRespawnPit)
                         {
-                            CalculationSpeed();
+                            UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
                         }
                     }
+                    else
+                    {
+                        StartCoroutine(CharacterRespawnFromThePit()); // Респавн из ямы
+                    }
                 }
-
             }
-        }
-
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(1))
-        {
-            SwipeUp();
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            isOneTouch = true;
-            OneTouch();
-        }
-        if (Input.GetMouseButton(0))
-        {
-            isTouchHold = true;
-            HoldTouch();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isTouchHold = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SwipeDown();
-        }
-#endif
-
-        // Рассчёт скорости анимации бега
-        animator.SetFloat("speed", 0.5f + ((Speed * 100) / (RangeSpeed.y - RangeSpeed.x) * 0.5f) / 100.0f);
-        if (SmoothRunFastLayer2Anim)
-        {
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0.75f, Time.deltaTime * 5));
-            if (TimerRunFastLayer2Anim > 0)
+            else if (isClashWithsOak)
             {
-                TimerRunFastLayer2Anim -= Time.deltaTime;
+                if (timerOakDown > 0)
+                {
+                    timerOakDown -= Time.deltaTime;
+                }
+                else
+                {
+                    if (!UILineRespawn.activeSelf && timeRespawnOak == TimeForRespawnOak)
+                    {
+                        UILineRespawn.SetActive(true);
+                    }
+                    if (timeRespawnOak > 0)
+                    {
+                        timeRespawnOak -= Time.deltaTime;
+                        if (UILineScale.transform.localScale.x > (timeRespawnOak * 1.0f) / TimeForRespawnOak)
+                        {
+                            UILineScale.transform.localScale -= new Vector3(0.5f * Time.deltaTime, 0f, 0f);
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(CharacterRespawnOak()); // Респавн из ямы
+                    }
+                }
             }
             else
             {
-                SmoothRunFastLayer2Anim = false;
+                // рассчёт ускорения
+                if (!isOneTouch)
+                {
+                    if (EnergyTimer > 0)
+                    {
+                        EnergyTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        if (Energy < MaxEnergy)
+                        {
+                            Energy += RecoveryEnergy * Time.deltaTime;
+                            SpeedUp = Mathf.Lerp(SpeedUp, SpeedUpMax, Time.deltaTime);
+                            Interface.CalculationSizeEnergyBar();
+                        }
+                    }
+
+                    if (!isTouchHold)
+                    {
+                        if (!isClashWithsOak)
+                        {
+                            if (!isFinish)
+                            {
+                                CalculationSpeed();
+                            }
+                        }
+                    }
+
+                }
             }
-        }
-        else
-        {
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0.0f, Time.deltaTime * 2));
-        }
 
-        // Проверка прикосновения к экрану
-        TouchScreen();
-
-        // процедра прозрачности анимационного слоя прыжка
-        Jump();
-
-        // процедура настройки прозрачности анимационного слоя при подкате
-        RolledUp();
-
-        // процедура настройки прозрачности анимационного слоя при столкновении
-        CollisionWithBarrier();
-
-        // Если персонаж подскользулся на луже стоя
-        if (isCollisionStandingSlipPuddle)
-        {
-            CollisionStandingSlipPuddle();
-        }
-        // Если персонаж упал в яму
-        if (isCollisionPitDown)
-        {
-            CollisionPitDown();
-        }
-
-        // Плавное ВКЛЮЧЕНИЕ анимации погружения под воду в озере
-        if (isEnableDivingAnimation)
-        {
-            animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), 1.0f, Time.deltaTime * 10));
-        }
-        // Плавное ВЫКЛЮЧЕНИЕ анимации погружения под воду в озере
-        if (isDisableDivingAnimation)
-        {
-            animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), .0f, Time.deltaTime * 10));
-            if (animator.GetLayerWeight(8) <= 0.05f)
+#if UNITY_EDITOR
+            if (Input.GetMouseButtonDown(1))
             {
-                isDisableDivingAnimation = false;
-                animator.SetBool("diving", false);
+                SwipeUp();
             }
-        }
-
-        // Если игрок столкнулся с веткой дуба
-        if (isClashWithsOak)
-        {
-            animator.SetLayerWeight(9, Mathf.Lerp(animator.GetLayerWeight(9), 1.0f, Time.deltaTime * SpeedClashWithsOak*1.5f));
-        }
-
-        // Если игрок финишировал
-        if (isFinish)
-        {
-            animator.SetLayerWeight(10, Mathf.Lerp(animator.GetLayerWeight(10), 1.0f, Time.deltaTime * 10));
-            Speed = Mathf.Lerp(Speed, .0f, Time.deltaTime * 10);
-            if (Speed <= 0.3f)
+            if (Input.GetMouseButtonDown(0))
             {
-                Speed = .0f;
+                isOneTouch = true;
+                OneTouch();
             }
-            //GetComponent<CameraLookAtPlayer>().isLookAt = false;
+            if (Input.GetMouseButton(0))
+            {
+                isTouchHold = true;
+                HoldTouch();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                isTouchHold = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SwipeDown();
+            }
+#endif
+
+            // Рассчёт скорости анимации бега
+            animator.SetFloat("speed", 0.5f + ((Speed * 100) / (RangeSpeed.y - RangeSpeed.x) * 0.5f) / 100.0f);
+            if (SmoothRunFastLayer2Anim)
+            {
+                animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0.75f, Time.deltaTime * 5));
+                if (TimerRunFastLayer2Anim > 0)
+                {
+                    TimerRunFastLayer2Anim -= Time.deltaTime;
+                }
+                else
+                {
+                    SmoothRunFastLayer2Anim = false;
+                }
+            }
+            else
+            {
+                animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0.0f, Time.deltaTime * 2));
+            }
+
+            // Проверка прикосновения к экрану
+            TouchScreen();
+
+            // процедра прозрачности анимационного слоя прыжка
+            Jump();
+
+            // процедура настройки прозрачности анимационного слоя при подкате
+            RolledUp();
+
+            // процедура настройки прозрачности анимационного слоя при столкновении
+            CollisionWithBarrier();
+
+            // Если персонаж подскользулся на луже стоя
+            if (isCollisionStandingSlipPuddle)
+            {
+                CollisionStandingSlipPuddle();
+            }
+            // Если персонаж упал в яму
+            if (isCollisionPitDown)
+            {
+                CollisionPitDown();
+            }
+
+            // Плавное ВКЛЮЧЕНИЕ анимации погружения под воду в озере
+            if (isEnableDivingAnimation)
+            {
+                animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), 1.0f, Time.deltaTime * 10));
+            }
+            // Плавное ВЫКЛЮЧЕНИЕ анимации погружения под воду в озере
+            if (isDisableDivingAnimation)
+            {
+                animator.SetLayerWeight(8, Mathf.Lerp(animator.GetLayerWeight(8), .0f, Time.deltaTime * 10));
+                if (animator.GetLayerWeight(8) <= 0.05f)
+                {
+                    isDisableDivingAnimation = false;
+                    animator.SetBool("diving", false);
+                }
+            }
+
+            // Если игрок столкнулся с веткой дуба
+            if (isClashWithsOak)
+            {
+                animator.SetLayerWeight(9, Mathf.Lerp(animator.GetLayerWeight(9), 1.0f, Time.deltaTime * SpeedClashWithsOak * 1.5f));
+            }
+
+            // Если игрок финишировал
+            if (isFinish)
+            {
+                animator.SetLayerWeight(10, Mathf.Lerp(animator.GetLayerWeight(10), 1.0f, Time.deltaTime * 10));
+                Speed = Mathf.Lerp(Speed, .0f, Time.deltaTime * 10);
+                if (Speed <= 0.3f)
+                {
+                    Speed = .0f;
+                }
+                //GetComponent<CameraLookAtPlayer>().isLookAt = false;
+            }
         }
     }
     // рассчет скорости бега персонажа
@@ -336,7 +341,7 @@ public class Player : MonoBehaviour
                         break;
 
                     case TouchPhase.Stationary:
-                        debug.text += "Touch hold";                                                                    /// DEBUG   DEBUG   DEBUG   DEBUG
+                        //debug.text += "Touch hold";                                                                    /// DEBUG   DEBUG   DEBUG   DEBUG
                         isTouchHold = true;
                         HoldTouch();
                         break;
@@ -575,6 +580,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", 1.0f);
         animator.SetBool("run", true);
         run = true;
+        isGame = true;
         this.GetComponent<Parallax>().enabled = true;
     }
 
