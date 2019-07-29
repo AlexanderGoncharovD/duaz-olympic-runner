@@ -237,12 +237,14 @@
      <Compile Include="Assets\scripts\DivingControlNormalizedTime.cs" />
      <Compile Include="Assets\scripts\EventsButtons.cs" />
      <Compile Include="Assets\scripts\Generator.cs" />
+     <Compile Include="Assets\scripts\GlobalGameControl.cs" />
      <Compile Include="Assets\scripts\InitializationOfCharactersInStore.cs" />
      <Compile Include="Assets\scripts\InitializationRival.cs" />
      <Compile Include="Assets\scripts\Interface.cs" />
      <Compile Include="Assets\scripts\Languages.cs" />
      <Compile Include="Assets\scripts\Parallax.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
+     <Compile Include="Assets\scripts\Rival.cs" />
      <Compile Include="Assets\scripts\SettingsElementCharacterInStore.cs" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\res\values\values.xml" />
      <None Include="Assets\Plugins\Android\com.google.games.gpgs-plugin-support-0.9.53\R.txt" />

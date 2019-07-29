@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 54311147771926626}
   - component: {fileID: 136803955914271328}
   - component: {fileID: 114056526861248558}
+  - component: {fileID: 114162689910586440}
   - component: {fileID: 114985104277414958}
   - component: {fileID: 114529052973080882}
   m_Layer: 0
@@ -775,6 +776,22 @@ MonoBehaviour:
   debug: {fileID: 0}
   UILineRespawn: {fileID: 0}
   UILineScale: {fileID: 0}
+--- !u!114 &114162689910586440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702475978640690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c3d5d677b575047a54492b027aba2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPoint: {fileID: 0}
+  NumTeadmills: 0
+  Speed: 5
+  RangeSpeed: {x: 5, y: 10}
+  initializationRival: {fileID: 0}
 --- !u!114 &114529052973080882
 MonoBehaviour:
   m_ObjectHideFlags: 1

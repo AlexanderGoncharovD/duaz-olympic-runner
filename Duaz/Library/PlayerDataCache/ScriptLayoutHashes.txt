@@ -13,6 +13,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 af723155c251fcfa0e66530a75f3ea4c UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 9b09bad06ba460286c226f09b35de205 Assembly-CSharp.dll:.Parallax
+38253a6edca3d92f1e7da9a97a5faa6d Assembly-CSharp.dll:.GlobalGameControl
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -112,8 +113,11 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+c24c041b403fa415111519b4fa61cf10 Assembly-CSharp.dll:.InitializationRival
 7b659dc7bf0867bab97c1cf9d92695df Assembly-CSharp.dll:.Generator
-dda4bccf4c87dcb4cc1ab95c2eed17bc Assembly-CSharp.dll:.Player
+713cbb38b24e05e786212907e5029769 Assembly-CSharp.dll:.Rival
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EventsButtons
+c1d07075bbd65624a9ed482634c9beea Assembly-CSharp.dll:.Player
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -140,6 +144,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 d3fd0222d84c50b4b05cd061c0e305ae Assembly-CSharp.dll:.CameraLookAtPlayer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DivingControlNormalizedTime
 d7badd3ca80f7546698705b34c68055f Assembly-CSharp.dll:.SettingsElementCharacterInStore
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:GooglePlayGames.OurUtils.PlayGamesHelperObject
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EventsButtons

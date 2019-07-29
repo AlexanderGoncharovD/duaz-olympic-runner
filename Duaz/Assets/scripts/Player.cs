@@ -575,10 +575,10 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", 0.0f);
     }
 
-    void AnimationStartAnimSpeedRun()
+    public void AnimationStartAnimSpeedRun()
     {
         animator.SetFloat("speed", 1.0f);
-        animator.SetBool("run", true);
+        //animator.SetBool("run", true);
         run = true;
         isGame = true;
         this.GetComponent<Parallax>().enabled = true;

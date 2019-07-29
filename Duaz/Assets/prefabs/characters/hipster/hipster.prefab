@@ -628,6 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c05992dec3f4494c00a0a348e208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 0
+  isGame: 0
   Speed: 0
   RangeSpeed: {x: 5, y: 10}
   SpeedUp: 0.75
@@ -639,6 +641,7 @@ MonoBehaviour:
   EnergyTimer: 0
   run: 0
   RunFast: 0
+  SmoothRunFastLayer2Anim: 0
   isJump: 0
   isJumpOver: 0
   JumpForce: 350

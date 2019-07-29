@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e4e786311ed03ca458b22c3b07102567
-timeCreated: 1564040451
+timeCreated: 1564383349
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,7 @@ TextureImporter:
     21300044: button upgrade icon
     21300046: button start game icon
     21300048: button location icon
+    21300050: loading
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -168,48 +169,6 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: button up
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 76
-        width: 177
-        height: 57
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: button down
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 133
-        width: 177
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: button disabled
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 185
-        width: 177
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: window
       rect:
         serializedVersion: 2
@@ -283,7 +242,7 @@ TextureImporter:
       name: background character
       rect:
         serializedVersion: 2
-        x: 183
+        x: 0
         y: 74
         width: 184
         height: 274
@@ -297,7 +256,7 @@ TextureImporter:
       name: background selected character
       rect:
         serializedVersion: 2
-        x: 368
+        x: 185
         y: 74
         width: 184
         height: 274
@@ -456,7 +415,21 @@ TextureImporter:
         width: 49
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: loading
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 74
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

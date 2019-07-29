@@ -178,7 +178,7 @@ public class Generator : MonoBehaviour
         else
         {
             rnd = 0;
-            Debug.LogWarning("StockOverflow");
+            Debug.LogWarning("StackOverflow");
         }
         return rnd;
 
