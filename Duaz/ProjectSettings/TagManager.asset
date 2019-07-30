@@ -23,6 +23,7 @@ TagManager:
   - EnergyBorder
   - LineRespawn
   - Canvas
+  - Rival
   layers:
   - Default
   - TransparentFX

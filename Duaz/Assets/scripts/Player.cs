@@ -64,7 +64,9 @@ public class Player : MonoBehaviour
     Vector3 StartPositionCharacter; // Стартовая позиция персонажа нужна для респавна из ямы (используется только Y)
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
+        gameObject.tag = "Player";
         // Поиск необходимых объектов
         Interface = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Interface>();
         InterfaceAnimator = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Animator>();
@@ -523,14 +525,21 @@ public class Player : MonoBehaviour
     float timerSlipPuddle = .5f; // время проигрывания анимации скольжения по луже 
     void CollisionStandingSlipPuddle()
     {
+        // Если время скольжения ещё не вышло
         if (timerSlipPuddle > 0)
         {
+            // То плавно повышаем прозрачность слоя с анимацией подскальзывания до единицы
             animator.SetLayerWeight(5, Mathf.Lerp(animator.GetLayerWeight(5), 1.0f, Time.deltaTime * Speed));
             timerSlipPuddle -= Time.deltaTime;
         }
         else
         {
+            // Если время скольжения вышло
+            // то уменьшаем прозрачность слоя с анимацией скольжения до нуля
             animator.SetLayerWeight(5, Mathf.Lerp(animator.GetLayerWeight(5), .0f, Time.deltaTime * Speed));
+
+            /* Когда прозрачность меньше 5%, то полное отключение слоя с анимацией скольжения
+             * восставновления времени скольжения и отключение переменноё отвечающей за скольжение по луже*/
             if (animator.GetLayerWeight(5) <= 0.05f)
             {
                 animator.SetLayerWeight(5, .0f);

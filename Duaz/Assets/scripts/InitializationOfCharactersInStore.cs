@@ -84,7 +84,6 @@ public class InitializationOfCharactersInStore : MonoBehaviour
                 newElement = Instantiate(Character[i].UIPrefab, parameter.CharacterPointSpawn.position, Quaternion.identity);
                 newElement.transform.parent = parameter.CharacterPointSpawn;
                 newElement.transform.localScale = new Vector3(0.3545806f, 0.3545806f, 0.3545806f);
-                Destroy(newElement.GetComponent<Rival>());
             }
             // Присвоение характеристик для отображения под карточкой в магазине
             parameter.Id = i;
@@ -319,6 +318,7 @@ public class InitializationOfCharactersInStore : MonoBehaviour
             Destroy(oldPlayer);
         }
         GameObject newPlayer = Instantiate(SelectedCharacter, startPoint.position, Quaternion.identity);
+        Destroy(newPlayer.GetComponent<Rival>());
         Interface.Player = newPlayer;
         Interface.PlayerScript = newPlayer.GetComponent<Player>();
         Interface.Start();

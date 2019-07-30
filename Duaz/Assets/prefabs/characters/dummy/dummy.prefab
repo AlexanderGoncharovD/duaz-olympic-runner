@@ -789,8 +789,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 0}
   NumTeadmills: 0
-  Speed: 5
   RangeSpeed: {x: 5, y: 10}
+  Speed: 5
+  SpeedLoss: 1
+  RolledUpTime: 2
+  isRun: 0
+  isRolledUp: 0
+  isCollisionWithBarrier: 0
+  isCollisionDownSlipPuddle: 0
+  isCollisionStandingSlipPuddle: 0
+  isEnableDivingAnimation: 0
+  isDisableDivingAnimation: 0
   initializationRival: {fileID: 0}
 --- !u!114 &114529052973080882
 MonoBehaviour:

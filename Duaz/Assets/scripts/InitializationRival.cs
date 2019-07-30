@@ -93,5 +93,18 @@ public class InitializationRival : MonoBehaviour {
         {
             child.sortingLayerName = sortingLayerName;
         }
+        // Если есть подключение к интернету
+        if (isInternetConnection)
+        {
+            // то дождаться спауна последнего соперника и отключить анимацию ожидания
+            if(idTreadmill == 3)
+            {
+                globalGameControl.WaitingForRivals.SetActive(false);
+            }
+        }
+        else
+        {
+            globalGameControl.WaitingForRivals.SetActive(false);
+        }
     }
 }

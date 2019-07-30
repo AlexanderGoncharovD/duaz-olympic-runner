@@ -16,7 +16,7 @@ public class GlobalGameControl : MonoBehaviour {
 
     public void StartGame()
     {
-        WaitingForRivals.SetActive(false);
+        //  WaitingForRivals.SetActive(false);
         Players[0].GetComponent<Animator>().enabled = true;
         Players[0].GetComponent<Animator>().SetInteger("start", AnimationStartParameter);
         Players[0].GetComponent<Animator>().SetBool("run", true);
@@ -29,14 +29,27 @@ public class GlobalGameControl : MonoBehaviour {
         AnimationStartParameter++;
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].GetComponent<Animator>().SetInteger("start", AnimationStartParameter);
+            if (Players[i] != null)
+            {
+                Players[i].GetComponent<Animator>().SetInteger("start", AnimationStartParameter);
+            }
         }
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         AnimationStartParameter++;
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].GetComponent<Animator>().SetInteger("start", AnimationStartParameter);
+            if (Players[i] != null)
+            {
+                Players[i].GetComponent<Animator>().SetInteger("start", AnimationStartParameter);
+            }
         }
         Players[0].GetComponent<Player>().AnimationStartAnimSpeedRun();
+        for (int i = 1; i < Players.Length; i++)
+        {
+            if (Players[i] != null)
+            {
+                Players[i].GetComponent<Rival>().AnimationStartAnimSpeedRun();
+            }
+        }
     }
 }
