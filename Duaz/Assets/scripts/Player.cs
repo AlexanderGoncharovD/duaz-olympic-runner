@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public float RolledUpTime; // Время, которое персонаж проезжает в лежачем положении (подкат)
     public bool isPitDown; // Если персонаж упал в яму
     public float TimeForRespawnPit = 3.0f; // Время для возрождения из ямы 
-    public float TimeForRespawnOak = 3.0f; // Время для возрождения из ямы 
+    public float TimeForRespawnOak = 3.0f; // Время для возрождения из ямы
 
     public Interface Interface; // ссылка на скрипт
     public Animator InterfaceAnimator; //Ссылка на аниматор графического интерфейса
