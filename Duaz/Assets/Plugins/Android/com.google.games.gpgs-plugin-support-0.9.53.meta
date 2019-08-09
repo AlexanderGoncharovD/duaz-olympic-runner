@@ -3,15 +3,16 @@ guid: 997fe062138cd044f94f17fe4c48d5df
 labels:
 - gpsr
 folderAsset: yes
-timeCreated: 1556718920
-licenseType: Free
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
   - first:
       Android: Android
