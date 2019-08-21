@@ -5,12 +5,12 @@ using UnityEngine;
 /*Скрипт отвечате за перемещение слоев векораций на сцене. Создание паралакс эффекта*/
 public class Parallax : MonoBehaviour
 {
-    public GameObject[] Layers = new GameObject[5]; // Список всех слоев на сцене с тегом "layer"
     public float SpeedIndex = 0.1f; //индекс разности смещения слоев для паралакса
-    float SpeedMoveCamera;
 
-	// Use this for initialization
-	void Start () {
+    private GameObject[] Layers = new GameObject[5]; // Список всех слоев на сцене с тегом "layer"
+    private float SpeedMoveCamera;
+    
+	public void Activate() {
         Layers[0] = new GameObject();
         Layers[0].name = Layers[0].tag = "Layer3";
         Layers[1] = new GameObject();
@@ -36,13 +36,20 @@ public class Parallax : MonoBehaviour
             Object.transform.parent = Layers[2].transform;
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         SpeedMoveCamera = GetComponent<CameraLookAtPlayer>().SpeedMoveCamera;
-        Layers[0].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.5f * Time.deltaTime;
-        Layers[1].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 1.5f * Time.deltaTime;
-        Layers[2].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 2.5f * Time.deltaTime;
+        if(Layers[0] != null)
+        {
+            Layers[0].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 0.5f * Time.deltaTime;
+        }
+        if (Layers[1] != null)
+        {
+            Layers[1].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 1.5f * Time.deltaTime;
+        }
+        if (Layers[2] != null)
+        {
+            Layers[2].transform.position -= Vector3.left * SpeedMoveCamera / SpeedIndex * 2.5f * Time.deltaTime;
+        }
     }
 }

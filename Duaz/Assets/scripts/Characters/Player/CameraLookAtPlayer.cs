@@ -19,15 +19,21 @@ public class CameraLookAtPlayer : MonoBehaviour
     Vector3 playerStartPoint; // точка, из которой старует игрок
     Camera camera;
     Transform MainCamera;
+    private MoveController moveController;
 
-	// Use this for initialization
-	void Start ()
+    private void Start()
     {
-        playerStartPoint = Player.position;
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camera = MainCamera.gameObject.GetComponent<Camera>();
-        Interface = camera.GetComponent<Interface>();
         Camera = MainCamera.parent;
+        Interface = camera.GetComponent<Interface>();
+    }
+
+    public void Activate ()
+    {
+        playerStartPoint = Player.position;
+        moveController = Player.gameObject.GetComponent<MoveController>();
+        isLookAt = true;
     }
 
     // Update is called once per frame
@@ -41,13 +47,13 @@ public class CameraLookAtPlayer : MonoBehaviour
             if (!isReset && !isFinish)
             {
                 /* формула позиции у камеры size min 5 и max 7 - берется процент умножается на процент от min -1,5 max -2.4
-                 * и все это вычитается из max 2.4 и прибаляется индекс 0.9 потому что камера плавно перемещается и нужен запас расстояния*/
+                    * и все это вычитается из max 2.4 и прибаляется индекс 0.9 потому что камера плавно перемещается и нужен запас расстояния*/
                 if (Camera.position.y > -2.3f - ((-0.9f / 100) * ((100 * (camera.orthographicSize - 5)) / 2)) + 0.9f)
                 {
                     // Если игрок стартанул и пробежал больше указаной дистанции, то скорость прислеживания камеры постепенно увеличивается
                     if ((playerStartPoint - Player.position).magnitude > DistanceFromStart)
                     {
-                        smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
+                        smooth = Mathf.Lerp(smooth, moveController.Speed / 4.5f, Time.deltaTime);
                     }
                 }
                 else
@@ -71,7 +77,7 @@ public class CameraLookAtPlayer : MonoBehaviour
                 }
                 else
                 {
-                    smooth = Mathf.Lerp(smooth, GetComponent<Player>().Speed / 4.5f, Time.deltaTime);
+                    smooth = Mathf.Lerp(smooth, moveController.Speed / 4.5f, Time.deltaTime);
                     if (smooth >= 1.0f)
                     {
                         isReset = false;
@@ -86,7 +92,7 @@ public class CameraLookAtPlayer : MonoBehaviour
 
             // отдаление камеры
             // Если скорость персонажа больше 80% от максимальной 
-            if(GetComponent<Player>().Speed >= GetComponent<Player>().RangeSpeed.y*0.8f)
+            if(moveController.Speed >= moveController.RangeSpeed.y*0.8f)
             {
                 // Плавное отдаление размера ортоганали камеры через Lerp
                 if (camera.orthographicSize < 7)

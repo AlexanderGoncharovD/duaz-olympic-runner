@@ -34,7 +34,6 @@ public class Rival : MonoBehaviour
         isJumpOver, // Прыжок персонажа закончился
         SmoothRunFastLayer2Anim, // Параметер второго анимациинного слоя на персонаже, параметер отвчает за прозрачность анимационного слоя
         isFinish;
-    public InitializationRival initializationRival; // Родительский скрипт персонажа
     [Range(0.0f, 1.0f)] public float ChancePerformAction = 0.95f, // Вероятность выполнения действия
         ActionExecution = 0.8f; // Вероятность прыжка в процентном соотношении
     public int IdSituation; // Порядковый номер ситуации (Массив ситуаций в скрипте AccelerationCalculation)
@@ -175,33 +174,12 @@ public class Rival : MonoBehaviour
                     {
                         isNotOnStartPosition = false;
                         animator.SetBool("run", false);
-                        /* Дополнить массив готовности соперников
-                         * Найти элемент с занчением "false" и сделать его "true"*/
-                        for (int i = 0; i < initializationRival.isDoneRivels.Length; i++)
-                        {
-                            if (!initializationRival.isDoneRivels[i])
-                            {
-                                initializationRival.isDoneRivels[i] = true;
-                                if (i == initializationRival.isDoneRivels.Length - 1)
-                                {
-                                    initializationRival.globalGameControl.startGame = true;
-                                    initializationRival.globalGameControl.StartGame();
-                                }
-                                break;
-                            }
-                        }
                     }
                 }
             }
             else
             {
-                if (initializationRival.globalGameControl.startGame)
-                {
-                    animator.enabled = true;
-                    animator.SetInteger("start", 1);
-                    animator.SetBool("run", true);
-                    isGame = true;
-                }
+
             }
         }
         

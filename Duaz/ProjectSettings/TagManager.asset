@@ -24,6 +24,7 @@ TagManager:
   - LineRespawn
   - Canvas
   - Rival
+  - OpponentStartPoint
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Barriers
   - 
   - 
   - 
